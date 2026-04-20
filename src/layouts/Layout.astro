@@ -6,7 +6,7 @@ interface Props {
 
 const {
   title = "timologio.ai — Τιμολόγηση με Τεχνητή Νοημοσύνη για την Ελλάδα",
-  description = "Δημιουργήστε τιμολόγια μιλώντας στον AI βοηθό σας. Συμβατό με AADE myDATA. Φωνητική εισαγωγή, σάρωση αποδείξεων, analytics και πολλά περισσότερα.",
+  description = "Δημιουργήστε τιμολόγια μιλώντας στον έξυπνο βοηθό σας. Συμβατό με το myDATA της ΑΑΔΕ. Φωνητική εισαγωγή, σάρωση αποδείξεων και στατιστικά.",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -25,7 +25,7 @@ const jsonLd = {
     "@type": "Offer",
     price: "0",
     priceCurrency: "EUR",
-    description: "Δωρεάν κατά τη διάρκεια του beta",
+    description: "Δωρεάν κατά τη δοκιμαστική περίοδο",
   },
   publisher: {
     "@type": "Organization",

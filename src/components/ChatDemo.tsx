@@ -325,7 +325,7 @@ function OverdueCard({ confirmed }: { confirmed: boolean }) {
 function PaymentReminderCard({ confirmed }: { confirmed: boolean }) {
   return (
     <CardShell>
-      <CardHeader label="Email Υπενθύμισης" badge="Προσχέδιο" />
+      <CardHeader label="Υπενθύμιση μέσω μέιλ" badge="Προσχέδιο" />
       <div className="space-y-2 text-xs">
         <div className="flex gap-2">
           <span className="w-11 flex-shrink-0" style={{ color: MUTED }}>Προς</span>
@@ -351,7 +351,7 @@ function PaymentReminderCard({ confirmed }: { confirmed: boolean }) {
           <p>Με εκτίμηση,</p>
         </div>
       </div>
-      <PrimaryAction confirmed={confirmed} idleLabel="Αποστολή email" doneLabel="Εστάλη στον πελάτη" />
+      <PrimaryAction confirmed={confirmed} idleLabel="Αποστολή μέιλ" doneLabel="Εστάλη στον πελάτη" />
     </CardShell>
   );
 }
@@ -419,7 +419,7 @@ const SCENARIOS: readonly Scenario[] = [
   },
   {
     id: "insights",
-    label: "Insights",
+    label: "Στατιστικά",
     description: "Ρωτήστε φυσικά για έσοδα, ΦΠΑ ή περιθώρια — οι υπολογισμοί γίνονται ζωντανά.",
     icon: <ChartIcon />,
     userMessage: "Πόσο ΦΠΑ θα πληρώσω στην επόμενη Φ2;",
@@ -440,7 +440,7 @@ const SCENARIOS: readonly Scenario[] = [
   {
     id: "reminder",
     label: "Υπενθύμιση Πληρωμής",
-    description: "Πείτε του ποιον να ενοχλήσει και ο agent συντάσσει ευγενικό email πληρωμής — έτοιμο να σταλεί.",
+    description: "Πείτε του ποιον να υπενθυμίσει και ο βοηθός συντάσσει ένα ευγενικό μέιλ πληρωμής, έτοιμο να σταλεί.",
     icon: <MailIcon />,
     userMessage: "Στείλε ευγενική υπενθύμιση στον Παπαδόπουλο για το Α-138",
     thinking: [
@@ -448,7 +448,7 @@ const SCENARIOS: readonly Scenario[] = [
       "Σύνταξη μηνύματος στα ελληνικά...",
       "Έτοιμο!",
     ],
-    responseIntro: "Ετοίμασα αυτό το email — θέλετε να το στείλω;",
+    responseIntro: "Ετοίμασα αυτό το μέιλ. Θέλετε να το στείλω;",
     ResponseCard: PaymentReminderCard,
   },
   {

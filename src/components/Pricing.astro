@@ -3,26 +3,26 @@ import Button from "./ui/Button.astro";
 
 const freeFeatures = [
   "10 τιμολόγια / μήνα",
-  "30 AI credits / μήνα",
+  "30 μονάδες βοηθού / μήνα",
   "200 MB αποθήκευση",
-  "myDATA περιλαμβάνεται",
-  "Email υποστήριξη",
+  "Το myDATA περιλαμβάνεται",
+  "Υποστήριξη μέσω μέιλ",
 ];
 
 const proFeatures = [
   "Απεριόριστα τιμολόγια",
-  "400 AI credits / μήνα",
+  "400 μονάδες βοηθού / μήνα",
   "2 GB αποθήκευση",
-  "myDATA περιλαμβάνεται",
-  "Analytics & insights",
-  "AI pocket accountant (πλήρης πρόσβαση)",
-  "Email + chat υποστήριξη",
+  "Το myDATA περιλαμβάνεται",
+  "Στατιστικά και προτάσεις",
+  "Έξυπνος λογιστής τσέπης (πλήρης πρόσβαση)",
+  "Υποστήριξη μέσω μέιλ και συνομιλίας",
 ];
 
 const creditPacks = [
-  { name: "Starter", price: "€3", credits: "100 AI credits", popular: false },
-  { name: "Plus", price: "€10", credits: "500 AI credits", popular: true },
-  { name: "Power", price: "€25", credits: "1.500 AI credits", popular: false },
+  { name: "Μικρό", price: "€3", credits: "100 μονάδες", popular: false },
+  { name: "Μεσαίο", price: "€10", credits: "500 μονάδες", popular: true },
+  { name: "Μεγάλο", price: "€25", credits: "1.500 μονάδες", popular: false },
 ];
 
 const storageAddons = [
@@ -61,7 +61,7 @@ const storageAddons = [
         </span>.
       </h2>
       <p class="text-text-muted text-lg leading-relaxed">
-        Δύο απλά πακέτα. Το myDATA περιλαμβάνεται πάντα, χωρίς κρυφές χρεώσεις ή ετήσιες δεσμεύσεις.
+        Δύο πακέτα και διαφανής τιμολόγηση. Το myDATA είναι πάντα μέσα και δεν υπάρχουν ετήσιες δεσμεύσεις.
       </p>
       <p class="mt-4 text-sm text-text-muted">
         Οι τιμές ισχύουν μετά την επίσημη κυκλοφορία.
@@ -117,7 +117,7 @@ const storageAddons = [
 
           <div class="relative bg-surface-card border-2 border-gold-500 rounded-[var(--radius-2xl)] p-7 sm:p-8 shadow-xl h-full flex flex-col hover:shadow-2xl transition-shadow">
             <div class="mb-6 pb-5 border-b border-border/60">
-              <h3 class="text-lg font-bold text-navy-900 mb-1">Pro</h3>
+              <h3 class="text-lg font-bold text-navy-900 mb-1">Επαγγελματικό</h3>
               <p class="text-sm text-text-muted">Για ενεργές επιχειρήσεις</p>
             </div>
 
@@ -141,7 +141,7 @@ const storageAddons = [
             </ul>
 
             <Button variant="gold" size="md" href="#beta" class="w-full">
-              Δοκιμάστε το Pro
+              Δοκιμάστε το Επαγγελματικό
             </Button>
             <p class="text-xs text-text-muted text-center mt-3">
               Δωρεάν κατά τη δοκιμαστική περίοδο
@@ -166,7 +166,7 @@ const storageAddons = [
             Χρειάζεστε περισσότερα;
           </h3>
           <p class="text-sm text-text-muted leading-relaxed">
-            Προσθέστε credits ή αποθήκευση μόνο όταν τα χρειαστείτε. Χωρίς συνδρομή, χωρίς αυτόματη ανανέωση.
+            Προσθέστε μονάδες ή αποθήκευση μόνο όταν σας χρειαστούν. Αγοράζετε μία φορά, χωρίς συνδρομή ή αυτόματη χρέωση.
           </p>
         </div>
 
@@ -177,7 +177,7 @@ const storageAddons = [
           <div>
             <p class="text-[11px] font-semibold text-gold-600 uppercase tracking-[0.18em] mb-4 flex items-center gap-2">
               <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-              Πακέτα AI Credits
+              Πακέτα μονάδων
             </p>
             <ul class="divide-y divide-border/60">
               {creditPacks.map((pack) => (
@@ -225,7 +225,7 @@ const storageAddons = [
 
         <!-- Credit explainer footnote -->
         <p class="text-xs text-text-muted text-center mt-10 max-w-xl mx-auto leading-relaxed border-t border-border/60 pt-6">
-          1 credit ≈ 1 απλή ερώτηση στον AI βοηθό. Σύνθετες ερωτήσεις ή ανάλυση εγγράφων χρησιμοποιούν περισσότερα credits. Τα credits ισχύουν για 12 μήνες από την αγορά.
+          1 μονάδα αντιστοιχεί περίπου σε μία απλή ερώτηση στον βοηθό. Οι σύνθετες ερωτήσεις και η ανάλυση εγγράφων χρησιμοποιούν περισσότερες μονάδες. Οι μονάδες ισχύουν για 12 μήνες από την αγορά.
         </p>
       </div>
     </div>
