@@ -1,0 +1,233 @@
+---
+import Button from "./ui/Button.astro";
+
+const freeFeatures = [
+  "10 τιμολόγια / μήνα",
+  "30 AI credits / μήνα",
+  "200 MB αποθήκευση",
+  "myDATA περιλαμβάνεται",
+  "Email υποστήριξη",
+];
+
+const proFeatures = [
+  "Απεριόριστα τιμολόγια",
+  "400 AI credits / μήνα",
+  "2 GB αποθήκευση",
+  "myDATA περιλαμβάνεται",
+  "Analytics & insights",
+  "AI pocket accountant (πλήρης πρόσβαση)",
+  "Email + chat υποστήριξη",
+];
+
+const creditPacks = [
+  { name: "Starter", price: "€3", credits: "100 AI credits", popular: false },
+  { name: "Plus", price: "€10", credits: "500 AI credits", popular: true },
+  { name: "Power", price: "€25", credits: "1.500 AI credits", popular: false },
+];
+
+const storageAddons = [
+  { label: "+10 GB αποθήκευση", price: "€2", period: "/μήνα" },
+  { label: "+50 GB αποθήκευση", price: "€6", period: "/μήνα" },
+];
+---
+
+<section id="pricing" class="py-20 lg:py-28 bg-surface">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Editorial header -->
+    <div class="text-center max-w-2xl mx-auto mb-14 animate-on-scroll">
+      <div class="inline-flex items-center gap-3 mb-5">
+        <span class="h-px w-10 bg-gold-500"></span>
+        <span class="text-[11px] font-semibold tracking-[0.22em] uppercase text-navy-700">Τιμολόγηση</span>
+        <span class="h-px w-10 bg-gold-500"></span>
+      </div>
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold text-navy-900 leading-[1.1] tracking-tight mb-5">
+        Απλή τιμολόγηση. Χωρίς <span class="relative inline-block">
+          παγίδες
+          <svg
+            class="absolute -bottom-1.5 left-0 w-full h-[0.4em]"
+            viewBox="0 0 200 12"
+            fill="none"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M4 8 Q 50 2, 100 7 T 196 6"
+              stroke="oklch(0.78 0.12 75)"
+              stroke-width="3"
+              stroke-linecap="round"
+              fill="none"
+            ></path>
+          </svg>
+        </span>.
+      </h2>
+      <p class="text-text-muted text-lg leading-relaxed">
+        Δύο απλά πακέτα. Το myDATA περιλαμβάνεται πάντα, χωρίς κρυφές χρεώσεις ή ετήσιες δεσμεύσεις.
+      </p>
+      <p class="mt-4 text-sm text-text-muted">
+        Οι τιμές ισχύουν μετά την επίσημη κυκλοφορία.
+        <a href="#beta" class="text-gold-600 hover:text-gold-700 font-semibold underline underline-offset-2 decoration-gold-500/50 hover:decoration-gold-500">Οι πρώτοι χρήστες δοκιμάζουν την εφαρμογή δωρεάν →</a>
+      </p>
+    </div>
+
+    <!-- Tier cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
+      <!-- Free tier -->
+      <div class="animate-on-scroll">
+        <div class="relative bg-surface-card border border-border rounded-[var(--radius-2xl)] p-7 sm:p-8 h-full flex flex-col shadow-sm hover:shadow-md transition-shadow">
+          <div class="mb-6 pb-5 border-b border-border/60">
+            <h3 class="text-lg font-bold text-navy-900 mb-1">Δωρεάν</h3>
+            <p class="text-sm text-text-muted">Για να δοκιμάσετε</p>
+          </div>
+
+          <div class="mb-7">
+            <div class="flex items-baseline gap-2">
+              <span class="font-heading text-5xl font-extrabold text-navy-900 leading-none tabular-nums">€0</span>
+              <span class="text-sm text-text-muted">για πάντα</span>
+            </div>
+            <p class="text-xs text-text-muted mt-2">Χωρίς χρονικό όριο, χωρίς πιστωτική κάρτα.</p>
+          </div>
+
+          <ul class="space-y-3 mb-8 flex-1">
+            {freeFeatures.map((feature) => (
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="text-sm text-navy-700">{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <Button variant="ghost" size="md" href="#beta" class="w-full border border-border">
+            Ξεκινήστε δωρεάν
+          </Button>
+        </div>
+      </div>
+
+      <!-- Pro tier -->
+      <div class="animate-on-scroll" style="animation-delay: 100ms">
+        <div class="relative h-full">
+          <!-- Recommended ribbon -->
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] rounded-full bg-gold-500 text-navy-950 shadow-md">
+              <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              Προτεινόμενο
+            </span>
+          </div>
+
+          <div class="relative bg-surface-card border-2 border-gold-500 rounded-[var(--radius-2xl)] p-7 sm:p-8 shadow-xl h-full flex flex-col hover:shadow-2xl transition-shadow">
+            <div class="mb-6 pb-5 border-b border-border/60">
+              <h3 class="text-lg font-bold text-navy-900 mb-1">Pro</h3>
+              <p class="text-sm text-text-muted">Για ενεργές επιχειρήσεις</p>
+            </div>
+
+            <div class="mb-7">
+              <div class="flex items-baseline gap-2">
+                <span class="font-heading text-5xl font-extrabold text-navy-900 leading-none tabular-nums">€9</span>
+                <span class="text-sm text-text-muted">/μήνα</span>
+              </div>
+              <p class="text-xs text-text-muted mt-2">με ΦΠΑ · μηνιαία χρέωση, καμία δέσμευση.</p>
+            </div>
+
+            <ul class="space-y-3 mb-8 flex-1">
+              {proFeatures.map((feature) => (
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span class="text-sm text-navy-700">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <Button variant="gold" size="md" href="#beta" class="w-full">
+              Δοκιμάστε το Pro
+            </Button>
+            <p class="text-xs text-text-muted text-center mt-3">
+              Δωρεάν κατά τη δοκιμαστική περίοδο
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add-ons menu card -->
+    <div class="animate-on-scroll">
+      <div class="relative bg-navy-50/60 border border-border rounded-[var(--radius-2xl)] p-7 sm:p-10">
+        <!-- Floating "optional" label -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <span class="inline-flex items-center gap-1.5 bg-surface-card border border-border text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-700 px-3 py-1 rounded-full shadow-sm">
+            Προαιρετικά
+          </span>
+        </div>
+
+        <div class="text-center max-w-xl mx-auto mb-10 mt-2">
+          <h3 class="font-heading text-2xl sm:text-[1.75rem] font-extrabold text-navy-900 leading-tight mb-2">
+            Χρειάζεστε περισσότερα;
+          </h3>
+          <p class="text-sm text-text-muted leading-relaxed">
+            Προσθέστε credits ή αποθήκευση μόνο όταν τα χρειαστείτε. Χωρίς συνδρομή, χωρίς αυτόματη ανανέωση.
+          </p>
+        </div>
+
+        <!-- Menu: credits (left) + storage (right) with dotted divider on desktop -->
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-8 md:gap-10 max-w-3xl mx-auto">
+
+          <!-- AI Credits list -->
+          <div>
+            <p class="text-[11px] font-semibold text-gold-600 uppercase tracking-[0.18em] mb-4 flex items-center gap-2">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              Πακέτα AI Credits
+            </p>
+            <ul class="divide-y divide-border/60">
+              {creditPacks.map((pack) => (
+                <li class="flex items-baseline justify-between gap-3 py-3">
+                  <div class="flex items-baseline gap-2 min-w-0 flex-wrap">
+                    <span class="text-sm font-semibold text-navy-900">{pack.name}</span>
+                    <span class="text-[13px] text-text-muted">· {pack.credits}</span>
+                    {pack.popular && (
+                      <span class="text-[9px] font-bold uppercase tracking-[0.12em] bg-gold-500/20 text-gold-700 px-1.5 py-0.5 rounded-sm">Δημοφιλές</span>
+                    )}
+                  </div>
+                  <span class="text-base font-extrabold tabular-nums text-navy-900 flex-shrink-0">{pack.price}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Vertical dotted divider (desktop only) -->
+          <div
+            class="hidden md:block self-stretch w-px"
+            style="background-image: linear-gradient(to bottom, oklch(0.72 0.03 260 / 0.35) 33%, transparent 0); background-size: 1px 8px; background-repeat: repeat-y;"
+            aria-hidden="true"
+          ></div>
+
+          <!-- Storage list -->
+          <div>
+            <p class="text-[11px] font-semibold text-gold-600 uppercase tracking-[0.18em] mb-4 flex items-center gap-2">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 7a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V7zM4 11h16M8 15h.01"/>
+              </svg>
+              Επιπλέον Αποθήκευση
+            </p>
+            <ul class="divide-y divide-border/60">
+              {storageAddons.map((addon) => (
+                <li class="flex items-baseline justify-between gap-3 py-3">
+                  <span class="text-sm text-navy-700">{addon.label}</span>
+                  <span class="text-base font-extrabold tabular-nums text-navy-900 flex-shrink-0">
+                    {addon.price}<span class="text-xs font-normal text-text-muted">{addon.period}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Credit explainer footnote -->
+        <p class="text-xs text-text-muted text-center mt-10 max-w-xl mx-auto leading-relaxed border-t border-border/60 pt-6">
+          1 credit ≈ 1 απλή ερώτηση στον AI βοηθό. Σύνθετες ερωτήσεις ή ανάλυση εγγράφων χρησιμοποιούν περισσότερα credits. Τα credits ισχύουν για 12 μήνες από την αγορά.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

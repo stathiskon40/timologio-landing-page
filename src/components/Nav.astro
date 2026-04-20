@@ -1,0 +1,254 @@
+---
+import Button from "./ui/Button.astro";
+
+const links = [
+  { label: "Δυνατότητες", href: "/#features" },
+  { label: "Πώς Λειτουργεί", href: "/#demo" },
+  { label: "Analytics", href: "/#analytics" },
+  { label: "Τιμές", href: "/#pricing" },
+  { label: "Προνόμια", href: "/#beta" },
+];
+---
+
+<nav id="main-nav" data-nav-theme="dark" class="fixed top-0 left-0 right-0 z-50">
+  <div class="nav-inner mx-auto">
+    <div class="flex items-center justify-between h-16 pl-4 pr-2 sm:pl-5 sm:pr-3">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2.5 group shrink-0">
+        <div class="w-8 h-8 rounded-[var(--radius-base)] bg-gold-500 flex items-center justify-center">
+          <span class="text-navy-950 font-heading font-extrabold text-sm leading-none">T</span>
+        </div>
+        <span class="nav-logo-text font-heading font-bold text-lg">
+          timologio<span class="text-gold-500">.ai</span>
+        </span>
+      </a>
+
+      <!-- Desktop links pill -->
+      <div class="nav-links-pill hidden md:flex items-center gap-1 rounded-full px-1.5 py-1.5">
+        {links.map((link) => (
+          <a
+            href={link.href}
+            class="nav-link px-3.5 py-1.5 text-sm font-medium rounded-full"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="hidden md:block shrink-0">
+        <Button variant="gold" size="sm" href="/#beta">Ξεκινήστε</Button>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="mobile-menu-btn"
+        class="nav-mobile-btn md:hidden p-2"
+        aria-label="Άνοιγμα μενού"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="mobile-menu-panel hidden md:hidden mx-4 mt-2 rounded-2xl"
+  >
+    <div class="px-3 py-3 space-y-1">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="mobile-nav-link block px-3 py-2.5 text-sm font-medium rounded-[var(--radius-base)]"
+        >
+          {link.label}
+        </a>
+      ))}
+      <div class="pt-2">
+        <Button variant="gold" size="sm" href="/#beta" class="w-full">Ξεκινήστε</Button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* ---- Theme tokens ---- */
+  /* Dark theme (default — hero, footer) */
+  #main-nav {
+    --nav-pill-bg: oklch(0.18 0.035 260 / 0.72);
+    --nav-pill-border: oklch(1 0 0 / 0.08);
+    --nav-pill-shadow:
+      0 1px 0 oklch(1 0 0 / 0.04) inset,
+      0 12px 40px -12px oklch(0 0 0 / 0.55),
+      0 2px 8px -4px oklch(0 0 0 / 0.35);
+
+    --nav-logo-color: oklch(1 0 0);
+    --nav-link-color: oklch(1 0 0 / 0.72);
+    --nav-link-hover-color: oklch(1 0 0);
+    --nav-link-hover-bg: oklch(1 0 0 / 0.10);
+    --nav-mobile-btn-color: oklch(1 0 0 / 0.85);
+
+    --nav-links-pill-bg: oklch(1 0 0 / 0.04);
+    --nav-links-pill-border: oklch(1 0 0 / 0.08);
+
+    --nav-mobile-panel-bg: oklch(0.18 0.035 260 / 0.92);
+    --nav-mobile-panel-border: oklch(1 0 0 / 0.10);
+    --nav-mobile-link-color: oklch(1 0 0 / 0.82);
+    --nav-mobile-link-hover-bg: oklch(1 0 0 / 0.06);
+  }
+
+  /* Light theme (over cream / surface sections) */
+  #main-nav[data-nav-theme="light"] {
+    --nav-pill-bg: oklch(1 0 0 / 0.78);
+    --nav-pill-border: oklch(0.22 0.04 260 / 0.08);
+    --nav-pill-shadow:
+      0 1px 0 oklch(1 0 0 / 0.6) inset,
+      0 14px 40px -14px oklch(0.16 0.03 260 / 0.25),
+      0 2px 8px -4px oklch(0.16 0.03 260 / 0.12);
+
+    --nav-logo-color: oklch(0.165 0.015 260);
+    --nav-link-color: oklch(0.42 0.02 260);
+    --nav-link-hover-color: oklch(0.165 0.015 260);
+    --nav-link-hover-bg: oklch(0.22 0.04 260 / 0.06);
+    --nav-mobile-btn-color: oklch(0.35 0.02 260);
+
+    --nav-links-pill-bg: oklch(0.22 0.04 260 / 0.03);
+    --nav-links-pill-border: oklch(0.22 0.04 260 / 0.06);
+
+    --nav-mobile-panel-bg: oklch(1 0 0 / 0.94);
+    --nav-mobile-panel-border: oklch(0.22 0.04 260 / 0.10);
+    --nav-mobile-link-color: oklch(0.28 0.02 260);
+    --nav-mobile-link-hover-bg: oklch(0.22 0.04 260 / 0.05);
+  }
+
+  /* ---- Outer nav: controls top offset during transition ---- */
+  #main-nav {
+    padding-top: 0;
+    transition: padding-top 600ms cubic-bezier(0.32, 0.72, 0, 1);
+    will-change: padding-top;
+  }
+
+  /* ---- Wrapper that morphs from full-width bar to floating pill ---- */
+  .nav-inner {
+    max-width: 80rem; /* 7xl — near full-width at top */
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 0;
+    box-shadow: none;
+    transition:
+      max-width 600ms cubic-bezier(0.32, 0.72, 0, 1),
+      background-color 450ms ease,
+      border-color 450ms ease,
+      border-radius 500ms ease,
+      box-shadow 500ms ease,
+      backdrop-filter 450ms ease;
+    will-change: max-width, background-color, border-radius;
+  }
+
+  /* ---- Scrolled state (class toggled by Layout.astro at scrollY > 60) ---- */
+  #main-nav.nav-solid {
+    padding-top: 0.875rem;
+  }
+
+  #main-nav.nav-solid .nav-inner {
+    max-width: 72rem;
+    background: var(--nav-pill-bg);
+    border-color: var(--nav-pill-border);
+    border-radius: 9999px;
+    box-shadow: var(--nav-pill-shadow);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  /* ---- Text and link colors (themed) ---- */
+  .nav-logo-text {
+    color: var(--nav-logo-color);
+    transition: color 350ms ease;
+  }
+
+  .nav-link {
+    color: var(--nav-link-color);
+    transition: color 200ms ease, background-color 200ms ease;
+  }
+  .nav-link:hover {
+    color: var(--nav-link-hover-color);
+    background: var(--nav-link-hover-bg);
+  }
+
+  .nav-mobile-btn {
+    color: var(--nav-mobile-btn-color);
+    transition: color 350ms ease;
+  }
+  .nav-mobile-btn:hover {
+    color: var(--nav-link-hover-color);
+  }
+
+  /* ---- Center links pill ---- */
+  .nav-links-pill {
+    background: var(--nav-links-pill-bg);
+    border: 1px solid var(--nav-links-pill-border);
+    transition:
+      background-color 400ms ease,
+      border-color 400ms ease;
+  }
+
+  #main-nav.nav-solid .nav-links-pill {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  /* ---- Mobile menu panel ---- */
+  .mobile-menu-panel {
+    background: var(--nav-mobile-panel-bg);
+    border: 1px solid var(--nav-mobile-panel-border);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    transition:
+      background-color 350ms ease,
+      border-color 350ms ease;
+  }
+
+  .mobile-nav-link {
+    color: var(--nav-mobile-link-color);
+    transition: color 200ms ease, background-color 200ms ease;
+  }
+  .mobile-nav-link:hover {
+    color: var(--nav-link-hover-color);
+    background: var(--nav-mobile-link-hover-bg);
+  }
+
+  /* ---- Responsive tuning ---- */
+  @media (max-width: 1100px) {
+    #main-nav.nav-solid .nav-inner {
+      max-width: calc(100% - 2rem);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .nav-inner {
+      max-width: 100%;
+    }
+    #main-nav.nav-solid .nav-inner {
+      max-width: calc(100% - 1.5rem);
+    }
+    #main-nav.nav-solid {
+      padding-top: 0.625rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #main-nav,
+    .nav-inner,
+    .nav-links-pill,
+    .nav-logo-text,
+    .nav-link,
+    .nav-mobile-btn,
+    .mobile-menu-panel,
+    .mobile-nav-link {
+      transition: none;
+    }
+  }
+</style>

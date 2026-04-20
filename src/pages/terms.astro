@@ -1,0 +1,122 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+
+const lastUpdated = "14 Απριλίου 2026";
+---
+
+<Layout
+  title="Όροι Χρήσης — timologio.ai"
+  description="Όροι χρήσης για το πρόγραμμα beta του timologio.ai."
+>
+  <header class="bg-navy-900 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-[var(--radius-base)] bg-gold-500 flex items-center justify-center">
+          <span class="text-navy-950 font-heading font-extrabold text-sm leading-none">T</span>
+        </div>
+        <span class="font-heading font-bold text-lg text-white">
+          timologio<span class="text-gold-500">.ai</span>
+        </span>
+      </a>
+      <a href="/" class="text-sm text-white/70 hover:text-white transition-colors">
+        ← Επιστροφή
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+    <p class="text-sm text-text-muted mb-2">Τελευταία ενημέρωση: {lastUpdated}</p>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mb-6">Όροι Χρήσης — Beta Πρόγραμμα</h1>
+
+    <p class="text-text-muted leading-relaxed mb-8">
+      Οι παρόντες Όροι Χρήσης διέπουν τη συμμετοχή σας στο πρόγραμμα beta του <strong>timologio.ai</strong>.
+      Με την υποβολή της αίτησής σας αποδέχεστε ανεπιφύλακτα τους παρακάτω όρους.
+    </p>
+
+    <section class="space-y-3 mb-8">
+      <h2 class="text-xl font-bold text-navy-900">1. Φύση της υπηρεσίας</h2>
+      <p class="text-text-muted leading-relaxed">
+        Το timologio.ai βρίσκεται σε <strong>πρώιμο στάδιο ανάπτυξης (beta)</strong>. Η πλατφόρμα παρέχεται
+        δωρεάν κατά τη διάρκεια του beta και προορίζεται για δοκιμαστική χρήση και συλλογή σχολίων. Δεν
+        υποκαθιστά την επίσημη λογιστική σας διαδικασία μέχρι την επίσημη έκδοση.
+      </p>
+    </section>
+
+    <section class="space-y-3 mb-8">
+      <h2 class="text-xl font-bold text-navy-900">2. «Ως έχει» (as-is)</h2>
+      <p class="text-text-muted leading-relaxed">
+        Η υπηρεσία παρέχεται <strong>«ως έχει»</strong> και «όπως είναι διαθέσιμη», χωρίς καμία εγγύηση ρητή
+        ή σιωπηρή — συμπεριλαμβανομένων, ενδεικτικά, εγγυήσεων εμπορευσιμότητας, καταλληλότητας για
+        συγκεκριμένο σκοπό ή διαθεσιμότητας. Δεν παρέχουμε Συμφωνία Επιπέδου Υπηρεσιών (SLA) κατά τη διάρκεια
+        του beta.
+      </p>
+    </section>
+
+    <section class="space-y-3 mb-8">
+      <h2 class="text-xl font-bold text-navy-900">3. Αλλαγές χωρίς προειδοποίηση</h2>
+      <p class="text-text-muted leading-relaxed">
+        Διατηρούμε το δικαίωμα να τροποποιήσουμε, αναστείλουμε ή διακόψουμε οποιοδήποτε τμήμα της υπηρεσίας
+        χωρίς προειδοποίηση κατά τη διάρκεια του beta. Αυτό περιλαμβάνει αλλαγές σε χαρακτηριστικά, διεπαφή
+        χρήστη, API και διάρθρωση δεδομένων.
+      </p>
+    </section>
+
+    <section class="space-y-3 mb-8">
+      <h2 class="text-xl font-bold text-navy-900">4. Μη παραγωγική χρήση</h2>
+      <p class="text-text-muted leading-relaxed">
+        Κατά τη διάρκεια του beta, η πλατφόρμα <strong>δεν προορίζεται για έκδοση επίσημων παραστατικών σε
+        παραγωγικό περιβάλλον</strong>. Αν συνδέσετε τα διαπιστευτήρια AADE myDATA σας, αναλαμβάνετε πλήρη
+        ευθύνη για τα τιμολόγια που τυχόν υποβάλλονται στο σύστημα της ΑΑΔΕ μέσω της πλατφόρμας μας. Σας
+        συνιστούμε να δοκιμάσετε αρχικά με τα διαπιστευτήρια δοκιμαστικού περιβάλλοντος (demo/sandbox) της
+        ΑΑΔΕ.
+      </p>
+    </section>
+
+    <section class="space-y-3 mb-8">
+      <h2 class="text-xl font-bold text-navy-900">5. Περιορισμός ευθύνης</h2>
+      <p class="text-text-muted leading-relaxed">
+        Στο μέγιστο βαθμό που επιτρέπει η ελληνική νομοθεσία, η ευθύνη μας απέναντί σας για οποιαδήποτε ζημία
+        που προκύπτει από τη χρήση της υπηρεσίας beta περιορίζεται στο ποσό που έχετε καταβάλει για την
+        υπηρεσία — <strong>δηλαδή μηδέν</strong>, εφόσον το beta είναι δωρεάν. Δεν ευθυνόμαστε για έμμεσες,
+        αποθετικές ή επακόλουθες ζημίες, απώλεια δεδομένων ή διαφυγόντα κέρδη.
+      </p>
+    </section>
+
+    <section class="space-y-3 mb-8">
+      <h2 class="text-xl font-bold text-navy-900">6. Δικαίωμα ανάκλησης πρόσβασης</h2>
+      <p class="text-text-muted leading-relaxed">
+        Διατηρούμε το δικαίωμα να ανακαλέσουμε την πρόσβασή σας στο beta ανά πάσα στιγμή, κατά την κρίση μας,
+        για παράδειγμα σε περίπτωση κατάχρησης της υπηρεσίας, παραβίασης των παρόντων όρων ή τεχνικών λόγων.
+        Θα σας ενημερώσουμε εγκαίρως όπου είναι εφικτό.
+      </p>
+    </section>
+
+    <section class="space-y-3 mb-8">
+      <h2 class="text-xl font-bold text-navy-900">7. Πνευματική ιδιοκτησία</h2>
+      <p class="text-text-muted leading-relaxed">
+        Όλο το περιεχόμενο, ο κώδικας, τα γραφικά, τα λογότυπα και η επωνυμία του timologio.ai ανήκουν στον
+        υπεύθυνο επεξεργασίας. Η χρήση της υπηρεσίας δεν σας παραχωρεί κανένα δικαίωμα στην πνευματική μας
+        ιδιοκτησία πέραν του δικαιώματος χρήσης για τον σκοπό για τον οποίο προορίζεται.
+      </p>
+    </section>
+
+    <section class="space-y-3 mb-8">
+      <h2 class="text-xl font-bold text-navy-900">8. Εφαρμοστέο δίκαιο — Δικαιοδοσία</h2>
+      <p class="text-text-muted leading-relaxed">
+        Οι παρόντες Όροι Χρήσης διέπονται από την ελληνική νομοθεσία. Για κάθε διαφορά που προκύπτει από ή
+        σχετίζεται με τους παρόντες όρους, αρμόδια ορίζονται τα δικαστήρια των Αθηνών.
+      </p>
+    </section>
+
+    <section class="space-y-3 mb-8">
+      <h2 class="text-xl font-bold text-navy-900">9. Επικοινωνία</h2>
+      <p class="text-text-muted leading-relaxed">
+        Για οποιαδήποτε ερώτηση σχετικά με τους παρόντες Όρους Χρήσης, στείλτε email στη διεύθυνση
+        <a href="mailto:contact@timologio.ai" class="text-gold-600 hover:text-gold-700 underline">contact@timologio.ai</a>.
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

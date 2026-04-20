@@ -1,0 +1,165 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "timologio.ai — Τιμολόγηση με Τεχνητή Νοημοσύνη για την Ελλάδα",
+  description = "Δημιουργήστε τιμολόγια μιλώντας στον AI βοηθό σας. Συμβατό με AADE myDATA. Φωνητική εισαγωγή, σάρωση αποδείξεων, analytics και πολλά περισσότερα.",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL("/og-image.png", Astro.site);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "timologio.ai",
+  description,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web, iOS, Android",
+  inLanguage: "el",
+  url: Astro.site?.toString(),
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+    description: "Δωρεάν κατά τη διάρκεια του beta",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "[ENTITY NAME]",
+  },
+};
+---
+
+<!doctype html>
+<html lang="el">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#203A64" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="timologio.ai" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:locale" content="el_GR" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen overflow-x-hidden">
+    <slot />
+
+    <script>
+      // Scroll-triggered animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+      );
+
+      document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Sticky nav scroll effect + theme detection
+      const nav = document.getElementById("main-nav");
+      if (nav) {
+        // Probe point near the top of the viewport where the nav pill sits.
+        // Nav is fixed ~14px from top with h-16; mid of the pill ≈ 46px.
+        const PROBE_Y = 46;
+
+        // Only dark-themed elements need to be tracked; everything else defaults to light.
+        const darkEls = Array.from(
+          document.querySelectorAll('[data-nav-theme="dark"]')
+        ).filter((el) => el.id !== "main-nav");
+
+        function updateNav() {
+          // Solid-pill state
+          if (window.scrollY > 60) {
+            nav.classList.add("nav-solid");
+          } else {
+            nav.classList.remove("nav-solid");
+          }
+
+          // Theme: any dark element whose bounds straddle the probe line wins;
+          // otherwise fall back to light.
+          let theme = "light";
+          for (const el of darkEls) {
+            const r = el.getBoundingClientRect();
+            if (r.top <= PROBE_Y && r.bottom > PROBE_Y) {
+              theme = "dark";
+              break;
+            }
+          }
+          if (nav.getAttribute("data-nav-theme") !== theme) {
+            nav.setAttribute("data-nav-theme", theme);
+          }
+        }
+
+        let ticking = false;
+        function onScroll() {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              updateNav();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+        // Initial sync (handles hash-jumps like /#pricing)
+        updateNav();
+      }
+
+      // Mobile nav toggle
+      const menuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+        // Close menu on link click
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import "../styles/global.css";
+</style>

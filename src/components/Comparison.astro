@@ -1,0 +1,77 @@
+---
+const rows = [
+  { feature: "Δημιουργία Τιμολογίων με AI", us: true, them: false },
+  { feature: "Φωνητική Εισαγωγή (Ελληνικά)", us: true, them: false },
+  { feature: "Σάρωση Αποδείξεων με AI", us: true, them: false },
+  { feature: "Analytics σε Πραγματικό Χρόνο", us: true, them: false },
+  { feature: "Εφαρμογή Κινητού (iOS & Android)", us: true, them: false },
+  { feature: "AI Insights & Προτάσεις", us: true, them: false },
+  { feature: "Διαχείριση Έργων & Projects", us: true, them: false },
+];
+---
+
+<section class="py-20 lg:py-28 bg-surface">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 animate-on-scroll">
+      <p class="text-sm font-semibold text-gold-500 uppercase tracking-wider mb-3">Σύγκριση</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mb-4">
+        Το πλεονέκτημα της Τεχνητής Νοημοσύνης
+      </h2>
+      <p class="text-text-muted text-lg">
+        Οι παραδοσιακοί πάροχοι ηλεκτρονικής τιμολόγησης στην Ελλάδα προσφέρουν τις ίδιες βασικές λειτουργίες. Κανείς όμως δεν είναι AI-first.
+      </p>
+    </div>
+
+    <div class="animate-on-scroll">
+      <div class="bg-surface-card rounded-[var(--radius-xl)] border border-border overflow-hidden shadow-sm">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-border">
+              <th class="text-left text-sm font-semibold text-navy-900 px-5 py-4">Δυνατότητα</th>
+              <th class="text-center px-5 py-4">
+                <div class="flex flex-col items-center gap-1">
+                  <div class="w-7 h-7 rounded-[var(--radius-base)] bg-gold-500 flex items-center justify-center">
+                    <span class="text-navy-950 font-heading font-extrabold text-xs">T</span>
+                  </div>
+                  <span class="text-xs font-semibold text-navy-900">timologio.ai</span>
+                </div>
+              </th>
+              <th class="text-center px-5 py-4">
+                <span class="text-xs font-medium text-text-muted">Παραδοσιακό<br/>Λογισμικό</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr class="border-b border-border last:border-0 hover:bg-navy-50/50 transition-colors">
+                <td class="text-sm text-navy-700 px-5 py-3">{row.feature}</td>
+                <td class="text-center px-5 py-3">
+                  {row.us ? (
+                    <svg class="w-5 h-5 mx-auto text-success" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  ) : (
+                    <svg class="w-5 h-5 mx-auto text-navy-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+                    </svg>
+                  )}
+                </td>
+                <td class="text-center px-5 py-3">
+                  {row.them ? (
+                    <svg class="w-5 h-5 mx-auto text-navy-300" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  ) : (
+                    <svg class="w-5 h-5 mx-auto text-navy-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+                    </svg>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

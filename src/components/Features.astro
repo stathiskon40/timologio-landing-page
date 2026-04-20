@@ -1,0 +1,232 @@
+---
+const features = [
+  {
+    num: "01",
+    kicker: "Τιμολόγια με AI",
+    title: "Ένα μήνυμα. Ένα τιμολόγιο.",
+    description:
+      "Γράφετε «Τιμολόγιο 500€ στη ΧΥΖ ΑΕ, ανάπτυξη ιστοσελίδας» — η Τεχνητή Νοημοσύνη το συντάσσει, το επικυρώνει και το στέλνει στο myDATA. Χωρίς φόρμες. Χωρίς μενού.",
+    variant: "hero",
+  },
+  {
+    num: "02",
+    kicker: "AADE · myDATA",
+    title: "Άμεση σύνδεση με την ΑΑΔΕ",
+    description:
+      "Αυτόματη υποβολή, λήψη MARK χωρίς αντιγραφή, συγχρονισμός χαρακτηρισμών και εισερχόμενα τιμολόγια — όλα σε δευτερόλεπτα.",
+    variant: "tall",
+  },
+  {
+    num: "03",
+    kicker: "Φωνή",
+    title: "Υπαγορεύστε στα ελληνικά",
+    description:
+      "Στο αυτοκίνητο, στο γραφείο, εν κινήσει. Ο βοηθός καταλαβαίνει ποσά, πελάτες και περιγραφές — και σας απαντάει πίσω.",
+    variant: "md",
+  },
+  {
+    num: "04",
+    kicker: "OCR",
+    title: "Φωτογραφία → καταχώρηση",
+    description:
+      "Τραβάτε μία φωτογραφία σε οποιαδήποτε απόδειξη. Η ΑΙ εξάγει προμηθευτή, ποσά και ΦΠΑ και κλείνει την εγγραφή μόνη της.",
+    variant: "md",
+  },
+  {
+    num: "05",
+    kicker: "Analytics",
+    title: "Τα νούμερά σας, σε πραγματικό χρόνο",
+    description:
+      "Έσοδα, έξοδα, ισοζύγιο ΦΠΑ και περιθώρια — ζωντανά, οπτικά, με AI insights ανά πελάτη, προμηθευτή και προϊόν.",
+    variant: "wide-gold",
+  },
+  {
+    num: "06",
+    kicker: "Προμηθευτές",
+    title: "Τέλος στα φύλλα Excel",
+    description:
+      "Καταχωρίζετε προμηθευτές, παρακολουθείτε έξοδα και συμφωνείτε κινήσεις — με πλήρη ανάλυση ανά προμηθευτή.",
+    variant: "wide",
+  },
+];
+---
+
+<section
+  id="features"
+  class="relative py-24 lg:py-32 bg-surface overflow-hidden"
+>
+  <!-- Texture: dotted grid + soft top gold hairline -->
+  <div
+    class="absolute inset-0 opacity-60 pointer-events-none"
+    style="background-image: radial-gradient(circle, oklch(0.72 0.03 260 / 0.22) 1px, transparent 1px); background-size: 26px 26px; mask-image: radial-gradient(ellipse at top, black 40%, transparent 85%); -webkit-mask-image: radial-gradient(ellipse at top, black 40%, transparent 85%);"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/40 to-transparent"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Editorial header — asymmetric, left-aligned -->
+    <div class="grid lg:grid-cols-12 gap-x-8 gap-y-8 items-end mb-16 lg:mb-20">
+      <div class="lg:col-span-7 animate-on-scroll">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="h-px w-10 bg-gold-500"></span>
+          <span
+            class="text-[11px] font-semibold tracking-[0.22em] uppercase text-navy-700"
+            >Δυνατότητες</span
+          >
+        </div>
+        <h2
+          class="font-heading text-[2.25rem] sm:text-5xl lg:text-[3.4rem] font-extrabold text-navy-900 leading-[1.05] tracking-tight"
+        >
+          Έξι τρόποι να γλιτώσετε<br />
+          <span class="relative inline-block">
+            <span
+              class="absolute inset-x-[-0.12em] top-[0.18em] bottom-[0.08em] bg-gold-500/35 -skew-x-[7deg] rounded-[3px]"
+              aria-hidden="true"
+            ></span>
+            <span class="relative">ώρες</span>
+          </span>
+          κάθε εβδομάδα.
+        </h2>
+      </div>
+      <div
+        class="lg:col-span-4 lg:col-start-9 lg:pb-3 animate-on-scroll"
+        style="animation-delay: 140ms"
+      >
+        <p class="text-text-muted text-lg leading-relaxed max-w-sm">
+          Χωρίς περίπλοκες φόρμες και accounting jargon. Μόνο τα εργαλεία που
+          χρειάζεται στ' αλήθεια ένας Έλληνας επαγγελματίας.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bento grid -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-5 lg:gap-6 lg:auto-rows-[minmax(0,auto)]"
+    >
+      {
+        features.map((f, i) => {
+          const isHero = f.variant === "hero";
+          const isTall = f.variant === "tall";
+          const isGold = f.variant === "wide-gold";
+
+          const layout = isHero
+            ? "sm:col-span-2 lg:col-span-4 lg:row-span-1 bg-navy-900 text-surface border border-navy-800"
+            : isTall
+              ? "sm:col-span-2 lg:col-span-2 lg:row-span-2 bg-surface-card border border-border"
+              : isGold
+                ? "sm:col-span-2 lg:col-span-3 bg-gold-100/50 border border-gold-300/60"
+                : f.variant === "wide"
+                  ? "sm:col-span-2 lg:col-span-3 bg-surface-card border border-border"
+                  : "sm:col-span-1 lg:col-span-2 bg-surface-card border border-border";
+
+          return (
+            <article
+              class:list={[
+                "group relative rounded-[var(--radius-2xl)] p-7 lg:p-8 animate-on-scroll transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md flex flex-col",
+                layout,
+              ]}
+              style={`animation-delay: ${i * 90}ms`}
+            >
+              {/* Numeral anchor — editorial running number */}
+              <div class="flex items-start justify-between mb-6 lg:mb-8">
+                <span
+                  class:list={[
+                    "font-heading text-[2rem] lg:text-[2.25rem] font-light leading-none tabular-nums tracking-tight",
+                    isHero
+                      ? "text-gold-400"
+                      : isGold
+                        ? "text-gold-700/80"
+                        : "text-navy-300",
+                  ]}
+                >
+                  {f.num}
+                </span>
+                <span
+                  class:list={[
+                    "mt-2 text-[10px] font-semibold tracking-[0.2em] uppercase",
+                    isHero
+                      ? "text-surface/55"
+                      : isGold
+                        ? "text-gold-700/90"
+                        : "text-text-muted",
+                  ]}
+                >
+                  {f.kicker}
+                </span>
+              </div>
+
+              <h3
+                class:list={[
+                  "font-heading font-extrabold tracking-tight mb-3",
+                  isHero
+                    ? "text-[1.65rem] lg:text-[2rem] leading-[1.12]"
+                    : "text-[1.15rem] lg:text-xl leading-[1.2]",
+                  isHero ? "text-surface" : "text-navy-900",
+                ]}
+              >
+                {f.title}
+              </h3>
+
+              <p
+                class:list={[
+                  "leading-relaxed",
+                  isHero
+                    ? "text-base lg:text-[1.0625rem] max-w-xl text-surface/75"
+                    : "text-sm lg:text-[0.9375rem] text-text-muted",
+                ]}
+              >
+                {f.description}
+              </p>
+
+              {isHero && (
+                <a
+                  href="#demo"
+                  class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-gold-400 hover:text-gold-300 transition-colors self-start group/cta"
+                >
+                  <span>Δείτε το live demo</span>
+                  <svg
+                    class="w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:translate-y-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              )}
+
+              {isTall && (
+                <div class="mt-auto pt-8">
+                  <div class="border-t border-border pt-5 space-y-2.5">
+                    <div class="flex items-center gap-2.5 text-xs text-text-muted">
+                      <span class="w-1 h-1 rounded-full bg-gold-500 flex-shrink-0" />
+                      <span>Αποστολή σε &lt; 2 δευτ.</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 text-xs text-text-muted">
+                      <span class="w-1 h-1 rounded-full bg-gold-500 flex-shrink-0" />
+                      <span>Αυτόματο MARK</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 text-xs text-text-muted">
+                      <span class="w-1 h-1 rounded-full bg-gold-500 flex-shrink-0" />
+                      <span>Εισερχόμενα σε real-time</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

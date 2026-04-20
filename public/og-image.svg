@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111d33"/>
+      <stop offset="100%" stop-color="#1a2e51"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#e4b14c" stop-opacity="0.25"/>
+      <stop offset="60%" stop-color="#e4b14c" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#e4b14c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- subtle grid pattern -->
+  <g opacity="0.05" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="100" y1="0" x2="100" y2="630"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="500" y1="0" x2="500" y2="630"/>
+    <line x1="700" y1="0" x2="700" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+    <line x1="1100" y1="0" x2="1100" y2="630"/>
+  </g>
+
+  <!-- Logo mark -->
+  <g transform="translate(80, 75)">
+    <rect width="64" height="64" rx="12" fill="#e4b14c"/>
+    <text x="32" y="48" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="40" font-weight="800" fill="#111d33">T</text>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="160" y="122" font-family="Manrope, system-ui, sans-serif" font-size="36" font-weight="700" fill="#ffffff">
+    timologio<tspan fill="#e4b14c">.ai</tspan>
+  </text>
+
+  <!-- Gold accent bar -->
+  <rect x="80" y="210" width="64" height="6" rx="3" fill="#e4b14c"/>
+
+  <!-- Headline -->
+  <text x="80" y="290" font-family="Manrope, system-ui, sans-serif" font-size="64" font-weight="800" fill="#ffffff">
+    Δημιουργήστε τιμολόγια
+  </text>
+  <text x="80" y="372" font-family="Manrope, system-ui, sans-serif" font-size="64" font-weight="800" fill="#e4b14c">
+    μιλώντας στον AI βοηθό σας
+  </text>
+
+  <!-- Subhead -->
+  <text x="80" y="448" font-family="Inter, system-ui, sans-serif" font-size="26" fill="#a8b3cc">
+    Φωνή · Σάρωση αποδείξεων · myDATA · Analytics
+  </text>
+
+  <!-- Badge: Beta Free -->
+  <g transform="translate(80, 500)">
+    <rect width="200" height="52" rx="26" fill="#e4b14c"/>
+    <text x="100" y="35" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="700" fill="#111d33">
+      Δωρεάν στο beta
+    </text>
+  </g>
+
+  <!-- Chip: myDATA -->
+  <g transform="translate(300, 500)">
+    <rect width="240" height="52" rx="26" fill="none" stroke="#a8b3cc" stroke-width="2"/>
+    <text x="120" y="35" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="500" fill="#cfd7e6">
+      Συμβατό με myDATA
+    </text>
+  </g>
+</svg>

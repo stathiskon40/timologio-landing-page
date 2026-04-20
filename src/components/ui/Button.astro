@@ -1,0 +1,31 @@
+---
+interface Props {
+  variant?: "gold" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
+  href?: string;
+  class?: string;
+}
+
+const { variant = "gold", size = "md", href, class: className = "" } = Astro.props;
+
+const base = "inline-flex items-center justify-center font-semibold transition-all duration-200 cursor-pointer";
+
+const variants: Record<string, string> = {
+  gold: "bg-gold-500 text-navy-950 hover:bg-gold-400 shadow-sm hover:shadow-md",
+  outline: "border-2 border-white/30 text-white hover:bg-white/10",
+  ghost: "text-navy-700 hover:bg-navy-50",
+};
+
+const sizes: Record<string, string> = {
+  sm: "px-4 py-2 text-sm rounded-[var(--radius-base)]",
+  md: "px-6 py-2.5 text-sm rounded-[var(--radius-lg)]",
+  lg: "px-8 py-3 text-base rounded-[var(--radius-lg)]",
+};
+
+const classes = [base, variants[variant], sizes[size], className].join(" ");
+const Tag = href ? "a" : "button";
+---
+
+<Tag href={href} class={classes}>
+  <slot />
+</Tag>

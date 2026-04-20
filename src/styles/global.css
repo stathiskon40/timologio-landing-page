@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors - Navy primary */
+  --color-navy-950: oklch(0.16 0.03 260);
+  --color-navy-900: oklch(0.22 0.04 260);
+  --color-navy-800: oklch(0.28 0.05 260);
+  --color-navy-700: oklch(0.35 0.08 260);
+  --color-navy-600: oklch(0.42 0.07 260);
+  --color-navy-500: oklch(0.50 0.06 260);
+  --color-navy-400: oklch(0.60 0.04 260);
+  --color-navy-300: oklch(0.72 0.03 260);
+  --color-navy-200: oklch(0.85 0.015 260);
+  --color-navy-100: oklch(0.93 0.008 260);
+  --color-navy-50: oklch(0.97 0.003 260);
+
+  /* Colors - Gold accent */
+  --color-gold-500: oklch(0.78 0.12 75);
+  --color-gold-400: oklch(0.83 0.10 75);
+  --color-gold-600: oklch(0.70 0.13 75);
+  --color-gold-700: oklch(0.60 0.12 75);
+  --color-gold-300: oklch(0.88 0.07 75);
+  --color-gold-200: oklch(0.93 0.04 75);
+  --color-gold-100: oklch(0.96 0.02 75);
+
+  /* Semantic */
+  --color-surface: oklch(0.985 0.002 260);
+  --color-surface-card: oklch(0.995 0.001 260);
+  --color-text-primary: oklch(0.165 0.015 260);
+  --color-text-muted: oklch(0.50 0.02 260);
+  --color-border: oklch(0.905 0.008 260);
+  --color-success: oklch(0.65 0.17 145);
+  --color-danger: oklch(0.577 0.245 27.325);
+
+  /* Typography */
+  --font-heading: "Manrope", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  /* Radius */
+  --radius-base: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-full: 9999px;
+}
+
+/* Scroll-triggered animations */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.is-visible {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+.animate-on-scroll.slide-right.is-visible {
+  animation: slide-in-right 0.6s ease-out forwards;
+}
+
+.animate-on-scroll.slide-left.is-visible {
+  animation: slide-in-left 0.6s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    opacity: 1;
+  }
+  .animate-on-scroll.is-visible {
+    animation: none;
+  }
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
