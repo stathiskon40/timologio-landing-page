@@ -1,0 +1,126 @@
+---
+const mandates = [
+  { name: "B2B ηλεκτρονική τιμολόγηση", date: "1 Οκτ 2026" },
+  { name: "IRIS πληρωμές", date: "1 Δεκ 2025" },
+  { name: "Ψηφιακό πελατολόγιο", date: "Επερχόμενο" },
+];
+
+const DEADLINE_ISO = "2026-10-01";
+---
+
+<section id="compliance" class="relative py-24 lg:py-32 bg-surface overflow-hidden">
+  <!-- Dotted grid + gold hairline (consistent with Features) -->
+  <div
+    class="absolute inset-0 opacity-60 pointer-events-none"
+    style="background-image: radial-gradient(circle, oklch(0.72 0.03 260 / 0.22) 1px, transparent 1px); background-size: 26px 26px; mask-image: radial-gradient(ellipse at top, black 40%, transparent 85%); -webkit-mask-image: radial-gradient(ellipse at top, black 40%, transparent 85%);"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/40 to-transparent"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Editorial asymmetric header -->
+    <div class="grid lg:grid-cols-12 gap-x-8 gap-y-8 items-end mb-14 lg:mb-16">
+      <div class="lg:col-span-7 animate-on-scroll">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="h-px w-10 bg-gold-500"></span>
+          <span class="text-[11px] font-semibold tracking-[0.22em] uppercase text-navy-700">Συμμόρφωση</span>
+        </div>
+        <h2 class="font-heading text-[2.25rem] sm:text-5xl lg:text-[3.4rem] font-extrabold text-navy-900 leading-[1.05] tracking-tight">
+          Ήδη έτοιμο<br />
+          για κάθε αλλαγή<br />
+          <span class="relative inline-block">
+            <span class="absolute inset-x-[-0.12em] top-[0.18em] bottom-[0.08em] bg-gold-500/35 -skew-x-[7deg] rounded-[3px]" aria-hidden="true"></span>
+            <span class="relative">της ΑΑΔΕ</span>
+          </span>.
+        </h2>
+      </div>
+      <div class="lg:col-span-4 lg:col-start-9 lg:pb-3 animate-on-scroll" style="animation-delay: 140ms">
+        <p class="text-text-muted text-lg leading-relaxed max-w-sm">
+          Τρεις υποχρεωτικές αλλαγές έρχονται μέχρι το τέλος του 2026. Δεν χρειάζεται να τις κυνηγήσετε — θα σας προλάβουμε εμείς.
+        </p>
+      </div>
+    </div>
+
+    <!-- Countdown band -->
+    <div class="relative mb-12 lg:mb-14 animate-on-scroll" style="animation-delay: 200ms">
+      <div class="grid sm:grid-cols-2 gap-5 sm:gap-6 py-5 border-t border-b border-border/70">
+        <div class="flex items-baseline gap-4">
+          <span class="font-heading text-xl font-light text-navy-300 tabular-nums leading-none">▸</span>
+          <div>
+            <p class="text-[11px] font-semibold tracking-[0.22em] uppercase text-navy-700 mb-1">Έναρξη B2B E-Invoicing</p>
+            <p class="font-heading text-2xl lg:text-[1.75rem] font-extrabold text-navy-900 leading-none tabular-nums">1 Οκτωβρίου 2026</p>
+          </div>
+        </div>
+        <div class="flex items-baseline gap-4 sm:justify-end">
+          <div class="sm:text-right">
+            <p class="text-[11px] font-semibold tracking-[0.22em] uppercase text-navy-700 mb-1">Απομένουν</p>
+            <p class="font-heading text-2xl lg:text-[1.75rem] font-extrabold text-gold-600 leading-none tabular-nums">
+              <span data-compliance-countdown>—</span> <span class="text-navy-700">ημέρες</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editorial closing statement -->
+    <div class="grid lg:grid-cols-12 gap-x-8 gap-y-10 items-start animate-on-scroll" style="animation-delay: 260ms">
+      <div class="lg:col-span-7">
+        <h3 class="font-heading text-[1.85rem] sm:text-[2.25rem] lg:text-[2.65rem] font-extrabold text-navy-900 leading-[1.1] tracking-tight">
+          Οι αλλαγές της ΑΑΔΕ{" "}
+          <span class="relative inline-block">
+            <span class="absolute inset-x-[-0.1em] top-[0.18em] bottom-[0.08em] bg-gold-500/35 -skew-x-[7deg] rounded-[3px]" aria-hidden="true"></span>
+            <span class="relative">δεν είναι δικό σας πρόβλημα</span>
+          </span>.
+        </h3>
+        <p class="mt-5 text-text-muted text-base lg:text-lg leading-relaxed max-w-xl">
+          Καμία μετάβαση, κανένα επιπλέον κόστος, καμία χαμένη ώρα πάνω σε φόρμες. Κάθε νέα υποχρέωση ενεργοποιείται μόνη της στον λογαριασμό σας.
+        </p>
+      </div>
+
+      <div class="lg:col-span-4 lg:col-start-9 lg:pt-2">
+        <p class="text-[11px] font-semibold tracking-[0.22em] uppercase text-navy-700 mb-4">Καλύπτουμε</p>
+        <ul class="space-y-3">
+          {mandates.map((m) => (
+            <li class="flex items-baseline gap-3 border-b border-border/70 pb-3 last:border-0 last:pb-0">
+              <svg class="w-3.5 h-3.5 text-gold-500 flex-shrink-0 translate-y-[2px]" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <span class="flex-1 flex items-baseline justify-between gap-3">
+                <span class="text-sm lg:text-[0.9375rem] font-semibold text-navy-900">{m.name}</span>
+                <span class="text-[11px] font-semibold tracking-[0.14em] uppercase text-text-muted tabular-nums whitespace-nowrap">{m.date}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Trust microline -->
+    <div class="mt-14 pt-8 border-t border-border/70 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] font-semibold tracking-[0.18em] uppercase text-text-muted animate-on-scroll" style="animation-delay: 420ms">
+      <span class="flex items-center gap-2">
+        <svg class="w-3.5 h-3.5 text-gold-500" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        ΑΑΔΕ-συμβατό
+      </span>
+      <span class="text-navy-200">·</span>
+      <span class="flex items-center gap-2">
+        <svg class="w-3.5 h-3.5 text-gold-500" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        GDPR
+      </span>
+      <span class="text-navy-200">·</span>
+      <span class="flex items-center gap-2">
+        <svg class="w-3.5 h-3.5 text-gold-500" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Δεδομένα στην ΕΕ
+      </span>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ DEADLINE_ISO }}>
+  const el = document.querySelector("[data-compliance-countdown]");
+  if (el) {
+    const target = new Date(`${DEADLINE_ISO}T00:00:00Z`).getTime();
+    const days = Math.max(0, Math.ceil((target - Date.now()) / 86_400_000));
+    el.textContent = days.toLocaleString("el-GR");
+  }
+</script>

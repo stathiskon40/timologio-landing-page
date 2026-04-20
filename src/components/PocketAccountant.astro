@@ -1,0 +1,135 @@
+---
+const bullets = [
+  {
+    num: "01",
+    title: "Μηνιαίο κλείσιμο σε 30 δευτερόλεπτα",
+    body: "«Ιούνιος: έσοδα €4.820, ΦΠΑ €891. Τρεις πελάτες καθυστερούν — να τους στείλω υπενθύμιση;»",
+  },
+  {
+    num: "02",
+    title: "Κυνηγάει τις εκπτώσεις για εσάς",
+    body: "Εντοπίζει πιθανά επαγγελματικά έξοδα από τις αγορές σας και σας ρωτάει αν θα τα καταχωρήσει στα βιβλία.",
+  },
+  {
+    num: "03",
+    title: "Εντοπίζει τι πάει στραβά",
+    body: "«Ο ΦΠΑ ανέβηκε 40% σε σχέση με τον προηγούμενο μήνα — θέλετε να δούμε γιατί;»",
+  },
+  {
+    num: "04",
+    title: "Εξηγεί σε απλά ελληνικά",
+    body: "Λέει γιατί προτείνει έναν χαρακτηρισμό Ε3 και γιατί όχι κάποιον άλλο. Ο λογιστής σας θα σας ευχαριστήσει.",
+  },
+];
+---
+
+<section id="assistant" class="relative py-24 lg:py-32 bg-navy-50/50 overflow-hidden">
+  <!-- Gold hairline top divider -->
+  <div
+    class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/40 to-transparent"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left: Narrative -->
+      <div class="animate-on-scroll">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="h-px w-10 bg-gold-500"></span>
+          <span class="text-[11px] font-semibold tracking-[0.22em] uppercase text-navy-700">Έξυπνος Βοηθός</span>
+        </div>
+        <h2 class="font-heading text-[2rem] sm:text-4xl lg:text-[2.75rem] font-extrabold text-navy-900 leading-[1.1] tracking-tight mb-5">
+          Ο λογιστής τσέπης<br/>
+          <span class="relative inline-block">
+            <span class="absolute inset-x-[-0.12em] top-[0.18em] bottom-[0.08em] bg-gold-500/35 -skew-x-[7deg] rounded-[3px]" aria-hidden="true"></span>
+            <span class="relative">που σκέφτεται για εσάς</span>
+          </span>.
+        </h2>
+        <p class="text-text-muted text-lg leading-relaxed max-w-xl mb-10">
+          Δεν είναι ακόμα ένα εργαλείο που φτιάχνει τιμολόγια. Είναι κάποιος που βλέπει τα νούμερά σας κάθε μέρα και σας μιλάει όταν κάτι χρειάζεται την προσοχή σας.
+        </p>
+
+        <ul class="space-y-6">
+          {bullets.map((b) => (
+            <li class="flex items-start gap-5">
+              <span class="font-heading text-[1.5rem] font-light text-gold-600 tabular-nums leading-none mt-1">{b.num}</span>
+              <div>
+                <p class="font-heading font-extrabold text-navy-900 text-[1.0625rem] leading-snug mb-1">{b.title}</p>
+                <p class="text-sm text-text-muted leading-relaxed">{b.body}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Right: Chat mockup -->
+      <div class="animate-on-scroll slide-right">
+        <div class="relative">
+          <!-- Corner brackets -->
+          <span aria-hidden="true" class="hidden lg:block absolute -top-3 -left-3 w-5 h-5 border-t-2 border-l-2 border-gold-500"></span>
+          <span aria-hidden="true" class="hidden lg:block absolute -top-3 -right-3 w-5 h-5 border-t-2 border-r-2 border-gold-500"></span>
+          <span aria-hidden="true" class="hidden lg:block absolute -bottom-3 -left-3 w-5 h-5 border-b-2 border-l-2 border-gold-500"></span>
+          <span aria-hidden="true" class="hidden lg:block absolute -bottom-3 -right-3 w-5 h-5 border-b-2 border-r-2 border-gold-500"></span>
+
+          <div class="bg-navy-900 rounded-[var(--radius-2xl)] border border-navy-800 shadow-xl overflow-hidden">
+            <!-- Window chrome -->
+            <div class="flex items-center gap-1.5 px-4 py-3 border-b border-white/5">
+              <div class="w-2.5 h-2.5 rounded-full bg-white/15"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-white/15"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-white/15"></div>
+              <span class="ml-3 text-xs text-white/30 font-medium">1η Ιουλίου · 09:02</span>
+            </div>
+
+            <div class="p-5 space-y-4">
+              <!-- AI proactive message -->
+              <div class="flex items-start gap-3">
+                <div class="w-7 h-7 rounded-full bg-gold-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3.5 h-3.5 text-gold-500" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <div class="space-y-2 max-w-[90%]">
+                  <div class="bg-white/5 rounded-[var(--radius-lg)] rounded-tl-sm px-4 py-3">
+                    <p class="text-sm text-white/85 leading-relaxed">
+                      Καλημέρα! Ο Ιούνιος έκλεισε με <span class="font-semibold text-white">€4.820 έσοδα</span> και <span class="font-semibold text-white">€891 ΦΠΑ</span> προς απόδοση.
+                    </p>
+                  </div>
+                  <div class="bg-white/5 rounded-[var(--radius-lg)] px-4 py-3">
+                    <p class="text-sm text-white/85 leading-relaxed">
+                      Τρεις πελάτες καθυστερούν πληρωμή πάνω από 20 μέρες. Να στείλω φιλικές υπενθυμίσεις;
+                    </p>
+                  </div>
+
+                  <!-- Mini summary card -->
+                  <div class="bg-white/[0.06] rounded-[var(--radius-lg)] border border-white/10 p-3.5">
+                    <div class="flex items-center justify-between mb-2.5">
+                      <span class="text-[10px] font-semibold uppercase tracking-[0.18em] text-gold-400">Σύνοψη Ιουνίου</span>
+                      <span class="text-[10px] px-2 py-0.5 bg-gold-500/20 text-gold-300 rounded-full font-medium">Προσχέδιο</span>
+                    </div>
+                    <div class="space-y-1.5 text-xs text-white/65">
+                      <div class="flex justify-between"><span>Έσοδα</span><span class="text-white/90 tabular-nums">€4.820,00</span></div>
+                      <div class="flex justify-between"><span>ΦΠΑ προς απόδοση</span><span class="text-white/90 tabular-nums">€891,00</span></div>
+                      <div class="flex justify-between"><span>Εξοφλημένα τιμολόγια</span><span class="text-white/90 tabular-nums">11 από 14</span></div>
+                      <div class="flex justify-between border-t border-white/10 pt-1.5 mt-1.5">
+                        <span>Εκτός πλάνου</span>
+                        <span class="text-danger font-semibold tabular-nums">3 πελάτες</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Action chips -->
+                  <div class="flex flex-wrap gap-2 pt-1">
+                    <button class="text-xs bg-gold-500 text-navy-950 font-semibold px-3 py-1.5 rounded-full hover:bg-gold-400 transition-colors">
+                      Στείλε υπενθυμίσεις
+                    </button>
+                    <button class="text-xs text-white/60 hover:text-white/85 px-3 py-1.5 border border-white/10 rounded-full transition-colors">
+                      Δείξε μου αναλυτικά
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
