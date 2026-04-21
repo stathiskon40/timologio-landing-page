@@ -68,6 +68,23 @@ const jsonLd = {
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
+    <script>
+      import posthog from "posthog-js";
+      const key = import.meta.env.PUBLIC_POSTHOG_KEY;
+      if (key) {
+        posthog.init(key, {
+          api_host: "https://eu.i.posthog.com",
+          person_profiles: "identified_only",
+          capture_pageview: true,
+          capture_pageleave: true,
+          session_recording: {
+            maskAllInputs: true,
+            maskTextSelector: "[data-private]",
+          },
+        });
+      }
+    </script>
+
     <title>{title}</title>
   </head>
   <body class="min-h-screen overflow-x-hidden">

@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
 
-const lastUpdated = "14 Απριλίου 2026";
+const lastUpdated = "21 Απριλίου 2026";
 ---
 
 <Layout
@@ -44,11 +44,13 @@ const lastUpdated = "14 Απριλίου 2026";
     <section class="space-y-3 mb-8">
       <h2 class="text-xl font-bold text-navy-900">2. Η τρέχουσα κατάσταση</h2>
       <p class="text-text-muted leading-relaxed">
-        <strong>Η παρούσα ιστοσελίδα δεν ορίζει cookies παρακολούθησης, στατιστικών τρίτων ή διαφημιστικά
-        cookies.</strong> Δεν χρησιμοποιούμε υπηρεσίες όπως Google Analytics, Facebook Pixel ή Hotjar. Δεν σας παρακολουθούμε μεταξύ ιστοσελίδων.
+        Χρησιμοποιούμε ένα εργαλείο ανάλυσης χρήσης ιστοσελίδας <strong>εντός Ευρωπαϊκής Ένωσης</strong>
+        (PostHog, EU region) για να κατανοούμε πώς οι επισκέπτες αξιοποιούν την ιστοσελίδα μας και για να
+        εντοπίζουμε προβλήματα χρηστικότητας. Δεν χρησιμοποιούμε διαφημιστικά δίκτυα, <em>Google Analytics</em>,
+        <em>Facebook Pixel</em> ή παρόμοιες υπηρεσίες, και δεν σας παρακολουθούμε μεταξύ άλλων ιστοσελίδων.
       </p>
       <p class="text-text-muted leading-relaxed">
-        Το μόνο που κάνουμε είναι να εξυπηρετούμε στατικό περιεχόμενο και να δεχόμαστε την υποβολή της
+        Πέρα από αυτή τη μέτρηση, η ιστοσελίδα εξυπηρετεί στατικό περιεχόμενο και δέχεται την υποβολή της
         φόρμας εγγραφής στο δοκιμαστικό πρόγραμμα. Η εγγραφή σας αποθηκεύεται στη βάση δεδομένων μας. Δείτε την
         <a href="/privacy" class="text-gold-600 hover:text-gold-700 underline">Πολιτική Απορρήτου</a> για
         λεπτομέρειες.
@@ -56,7 +58,24 @@ const lastUpdated = "14 Απριλίου 2026";
     </section>
 
     <section class="space-y-3 mb-8">
-      <h2 class="text-xl font-bold text-navy-900">3. Αναγκαία cookies</h2>
+      <h2 class="text-xl font-bold text-navy-900">3. Cookies ανάλυσης (PostHog)</h2>
+      <p class="text-text-muted leading-relaxed">
+        Το PostHog ορίζει cookies πρώτου μέρους (<code class="text-xs bg-navy-100 px-1.5 py-0.5 rounded">ph_*</code>)
+        για να αναγνωρίζει επαναλαμβανόμενες επισκέψεις και να μετρά ανώνυμα στατιστικά στοιχεία χρήσης
+        (προβολές σελίδας, βασικές ενέργειες). Η διεύθυνση IP σας <strong>ανωνυμοποιείται</strong> κατά τη λήψη
+        και δεν δημιουργούμε προφίλ για μη ταυτοποιημένους επισκέπτες. Τα δεδομένα φιλοξενούνται στην
+        περιοχή EU του PostHog (Φρανκφούρτη) και δεν διαβιβάζονται εκτός ΕΕ.
+      </p>
+      <p class="text-text-muted leading-relaxed">
+        Νομική βάση: έννομο συμφέρον (άρθρο 6§1 στ΄ GDPR) για τη βελτίωση της ιστοσελίδας. Μπορείτε να
+        εξαιρεθείτε ενεργοποιώντας το σήμα «Do Not Track» στο πρόγραμμα περιήγησής σας, διαγράφοντας τα cookies
+        <code class="text-xs bg-navy-100 px-1.5 py-0.5 rounded">ph_*</code> ή επικοινωνώντας μαζί μας στο
+        <a href="mailto:contact@kiros.gr" class="text-gold-600 hover:text-gold-700 underline">contact@kiros.gr</a>.
+      </p>
+    </section>
+
+    <section class="space-y-3 mb-8">
+      <h2 class="text-xl font-bold text-navy-900">4. Αναγκαία cookies</h2>
       <p class="text-text-muted leading-relaxed">
         Εάν στο μέλλον προστεθούν λειτουργικά ή αναγκαία cookies (π.χ. για προτίμηση γλώσσας ή τη διατήρηση
         της συνεδρίας σας στην εφαρμογή μετά την επίσημη κυκλοφορία), θα ενημερωθεί η παρούσα πολιτική και
@@ -65,7 +84,7 @@ const lastUpdated = "14 Απριλίου 2026";
     </section>
 
     <section class="space-y-3 mb-8">
-      <h2 class="text-xl font-bold text-navy-900">4. Γραμματοσειρές Google Fonts</h2>
+      <h2 class="text-xl font-bold text-navy-900">5. Γραμματοσειρές Google Fonts</h2>
       <p class="text-text-muted leading-relaxed">
         Η ιστοσελίδα φορτώνει τις γραμματοσειρές <em>Inter</em> και <em>Manrope</em> από το Google Fonts
         (<code class="text-xs bg-navy-100 px-1.5 py-0.5 rounded">fonts.googleapis.com</code>,
@@ -77,7 +96,7 @@ const lastUpdated = "14 Απριλίου 2026";
     </section>
 
     <section class="space-y-3 mb-8">
-      <h2 class="text-xl font-bold text-navy-900">5. Πώς να διαχειριστείτε τα cookies</h2>
+      <h2 class="text-xl font-bold text-navy-900">6. Πώς να διαχειριστείτε τα cookies</h2>
       <p class="text-text-muted leading-relaxed">
         Μπορείτε ανά πάσα στιγμή να διαχειριστείτε ή να διαγράψετε cookies από τις ρυθμίσεις του πρόγραμμα περιήγησης σας.
         Επειδή δεν χρησιμοποιούμε cookies παρακολούθησης, η απενεργοποίηση τους δεν επηρεάζει τη λειτουργία
@@ -86,7 +105,7 @@ const lastUpdated = "14 Απριλίου 2026";
     </section>
 
     <section class="space-y-3 mb-8">
-      <h2 class="text-xl font-bold text-navy-900">6. Επικοινωνία</h2>
+      <h2 class="text-xl font-bold text-navy-900">7. Επικοινωνία</h2>
       <p class="text-text-muted leading-relaxed">
         Για ερωτήσεις σχετικά με την παρούσα Πολιτική Cookies, επικοινωνήστε στη διεύθυνση
         <a href="mailto:contact@kiros.gr" class="text-gold-600 hover:text-gold-700 underline">contact@kiros.gr</a>.

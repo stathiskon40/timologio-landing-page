@@ -418,6 +418,13 @@ const faqs = [
           form.classList.add("hidden");
           successBlock.classList.remove("hidden");
           (window as unknown as { __bumpBetaCounter?: () => void }).__bumpBetaCounter?.();
+
+          const ph = (window as unknown as { posthog?: { capture: (e: string, p?: Record<string, unknown>) => void } }).posthog;
+          ph?.capture("beta_signup_submitted", {
+            position: json.position,
+            business_type: payload.business_type,
+            current_tool: payload.current_tool,
+          });
           return;
         }
         showError(json.error || "Σφάλμα εγγραφής. Παρακαλούμε δοκιμάστε ξανά.");

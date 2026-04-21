@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
 
-const lastUpdated = "14 Απριλίου 2026";
+const lastUpdated = "21 Απριλίου 2026";
 ---
 
 <Layout
@@ -59,8 +59,10 @@ const lastUpdated = "14 Απριλίου 2026";
       </ul>
       <p class="text-text-muted leading-relaxed">
         Δεν συλλέγουμε δεδομένα ειδικών κατηγοριών (υγείας, θρησκευτικών πεποιθήσεων κ.λπ.) ούτε δεδομένα
-        ανηλίκων. Η ιστοσελίδα μας δεν χρησιμοποιεί cookies παρακολούθησης ή εργαλεία στατιστικών τρίτων.
-        Δείτε την <a href="/cookies" class="text-gold-600 hover:text-gold-700 underline">Πολιτική Cookies</a>.
+        ανηλίκων. Χρησιμοποιούμε το PostHog (EU) για ανώνυμη μέτρηση χρήσης της ιστοσελίδας, με
+        ανωνυμοποίηση διεύθυνσης IP. Δείτε την
+        <a href="/cookies" class="text-gold-600 hover:text-gold-700 underline">Πολιτική Cookies</a>
+        για λεπτομέρειες.
       </p>
     </section>
 
@@ -108,6 +110,15 @@ const lastUpdated = "14 Απριλίου 2026";
           <strong class="text-navy-900">Supabase Inc.</strong> (διαχειριζόμενη βάση δεδομένων PostgreSQL, αποθήκευση εγγραφών). Τα
           δεδομένα φιλοξενούνται σε κέντρο δεδομένων εντός της Ευρωπαϊκής Ένωσης, στην περιοχή Κεντρικής ΕΕ
           (Frankfurt, <code class="text-xs bg-navy-100 px-1.5 py-0.5 rounded">eu-central-1</code>).
+        </li>
+        <li>
+          <strong class="text-navy-900">PostHog Inc.</strong> (ανάλυση χρήσης ιστοσελίδας — προβολές σελίδας,
+          βασικές ενέργειες επισκεπτών, προαιρετική καταγραφή συνεδρίας με απόκρυψη πεδίων φόρμας). Τα
+          δεδομένα φιλοξενούνται στην περιοχή EU του PostHog
+          (<code class="text-xs bg-navy-100 px-1.5 py-0.5 rounded">eu.i.posthog.com</code>, Φρανκφούρτη).
+          Η διεύθυνση IP ανωνυμοποιείται κατά τη λήψη. Νομική βάση: έννομο συμφέρον
+          (άρθρο 6§1 στ΄ GDPR) για τη βελτίωση της υπηρεσίας. Μπορείτε να εξαιρεθείτε ανά πάσα στιγμή
+          ενεργοποιώντας το σήμα «Do Not Track» στο πρόγραμμα περιήγησής σας ή επικοινωνώντας μαζί μας.
         </li>
       </ul>
       <p class="text-text-muted leading-relaxed">
