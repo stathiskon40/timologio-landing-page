@@ -3,22 +3,22 @@ const bullets = [
   {
     num: "01",
     title: "Μηνιαίο κλείσιμο σε 30 δευτερόλεπτα",
-    body: "«Ιούνιος: έσοδα €4.820, ΦΠΑ €891. Τρεις πελάτες καθυστερούν — να τους στείλω υπενθύμιση;»",
+    body: "«Ιούνιος: έσοδα 4.820 €, ΦΠΑ 891 €. Τρεις πελάτες καθυστερούν πληρωμές. Να τους στείλω υπενθύμιση;»",
   },
   {
     num: "02",
-    title: "Κυνηγάει τις εκπτώσεις για εσάς",
-    body: "Εντοπίζει πιθανά επαγγελματικά έξοδα από τις αγορές σας και σας ρωτάει αν θα τα καταχωρήσει στα βιβλία.",
+    title: "Εντοπίζει τις εκπτώσεις για εσάς",
+    body: "Αναλύει τις αγορές σας, ξεχωρίζει ποιες μοιάζουν επαγγελματικές και σας ρωτά αν θα καταχωρηθούν στα βιβλία.",
   },
   {
     num: "03",
     title: "Εντοπίζει τι πάει στραβά",
-    body: "«Ο ΦΠΑ ανέβηκε 40% σε σχέση με τον προηγούμενο μήνα — θέλετε να δούμε γιατί;»",
+    body: "«Ο ΦΠΑ ανέβηκε 40% σε σχέση με τον προηγούμενο μήνα. Θέλετε να δούμε γιατί;»",
   },
   {
     num: "04",
     title: "Εξηγεί σε απλά ελληνικά",
-    body: "Λέει γιατί προτείνει έναν χαρακτηρισμό Ε3 και γιατί όχι κάποιον άλλο. Ο λογιστής σας θα σας ευχαριστήσει.",
+    body: "Σας εξηγεί γιατί προτείνει έναν συγκεκριμένο χαρακτηρισμό Ε3 και όχι κάποιον άλλον. Ο λογιστής σας θα το εκτιμήσει.",
   },
 ];
 ---
@@ -36,7 +36,7 @@ const bullets = [
       <div class="animate-on-scroll">
         <div class="flex items-center gap-3 mb-5">
           <span class="h-px w-10 bg-gold-500"></span>
-          <span class="text-[11px] font-semibold tracking-[0.22em] uppercase text-navy-700">Έξυπνος Βοηθός</span>
+          <span class="text-[11px] font-semibold tracking-[0.22em] uppercase text-navy-700">Ο Βοηθός σας</span>
         </div>
         <h2 class="font-heading text-[2rem] sm:text-4xl lg:text-[2.75rem] font-extrabold text-navy-900 leading-[1.1] tracking-tight mb-5">
           Ο λογιστής τσέπης<br/>
@@ -46,7 +46,7 @@ const bullets = [
           </span>.
         </h2>
         <p class="text-text-muted text-lg leading-relaxed max-w-xl mb-10">
-          Δεν είναι ακόμα ένα εργαλείο που φτιάχνει τιμολόγια. Είναι κάποιος που βλέπει τα νούμερά σας κάθε μέρα και σας μιλάει όταν κάτι χρειάζεται την προσοχή σας.
+          Παρακολουθεί τα νούμερά σας κάθε μέρα και σας ενημερώνει όταν κάτι χρειάζεται την προσοχή σας. Στα ελληνικά, με συγκεκριμένα παραδείγματα, χωρίς λογιστικούς όρους.
         </p>
 
         <ul class="space-y-6">
@@ -89,12 +89,12 @@ const bullets = [
                 <div class="space-y-2 max-w-[90%]">
                   <div class="bg-white/5 rounded-[var(--radius-lg)] rounded-tl-sm px-4 py-3">
                     <p class="text-sm text-white/85 leading-relaxed">
-                      Καλημέρα! Ο Ιούνιος έκλεισε με <span class="font-semibold text-white">€4.820 έσοδα</span> και <span class="font-semibold text-white">€891 ΦΠΑ</span> προς απόδοση.
+                      Καλημέρα! Ο Ιούνιος έκλεισε με <span class="font-semibold text-white">4.820 € έσοδα</span> και <span class="font-semibold text-white">891 € ΦΠΑ</span> προς απόδοση.
                     </p>
                   </div>
                   <div class="bg-white/5 rounded-[var(--radius-lg)] px-4 py-3">
                     <p class="text-sm text-white/85 leading-relaxed">
-                      Τρεις πελάτες καθυστερούν πληρωμή πάνω από 20 μέρες. Να στείλω φιλικές υπενθυμίσεις;
+                      Τρεις πελάτες καθυστερούν πληρωμή πάνω από 20 ημέρες. Να τους στείλω υπενθύμιση;
                     </p>
                   </div>
 
@@ -105,11 +105,11 @@ const bullets = [
                       <span class="text-[10px] px-2 py-0.5 bg-gold-500/20 text-gold-300 rounded-full font-medium">Προσχέδιο</span>
                     </div>
                     <div class="space-y-1.5 text-xs text-white/65">
-                      <div class="flex justify-between"><span>Έσοδα</span><span class="text-white/90 tabular-nums">€4.820,00</span></div>
-                      <div class="flex justify-between"><span>ΦΠΑ προς απόδοση</span><span class="text-white/90 tabular-nums">€891,00</span></div>
+                      <div class="flex justify-between"><span>Έσοδα</span><span class="text-white/90 tabular-nums">4.820,00 €</span></div>
+                      <div class="flex justify-between"><span>ΦΠΑ προς απόδοση</span><span class="text-white/90 tabular-nums">891,00 €</span></div>
                       <div class="flex justify-between"><span>Εξοφλημένα τιμολόγια</span><span class="text-white/90 tabular-nums">11 από 14</span></div>
                       <div class="flex justify-between border-t border-white/10 pt-1.5 mt-1.5">
-                        <span>Εκτός πλάνου</span>
+                        <span>Εκκρεμούν</span>
                         <span class="text-danger font-semibold tabular-nums">3 πελάτες</span>
                       </div>
                     </div>
