@@ -5,7 +5,7 @@ interface Props {
 }
 
 const {
-  title = "timologio.ai — Τιμολόγηση με Τεχνητή Νοημοσύνη για την Ελλάδα",
+  title = "katastixo.com | Τιμολόγηση με Τεχνητή Νοημοσύνη για την Ελλάδα",
   description = "Δημιουργήστε τιμολόγια μιλώντας στον έξυπνο βοηθό σας. Συμβατό με το myDATA της ΑΑΔΕ. Φωνητική εισαγωγή, σάρωση αποδείξεων και στατιστικά.",
 } = Astro.props;
 
@@ -15,7 +15,7 @@ const ogImageURL = new URL("/og-image.png", Astro.site);
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "timologio.ai",
+  name: "katastixo.com",
   description,
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web, iOS, Android",
@@ -47,7 +47,7 @@ const jsonLd = {
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="timologio.ai" />
+    <meta property="og:site_name" content="katastixo.com" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:locale" content="el_GR" />

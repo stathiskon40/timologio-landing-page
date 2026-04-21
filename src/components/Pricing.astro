@@ -2,8 +2,8 @@
 import Button from "./ui/Button.astro";
 
 const freeFeatures = [
-  "10 τιμολόγια / μήνα",
-  "30 μονάδες βοηθού / μήνα",
+  "10 τιμολόγια τον μήνα",
+  "30 μονάδες βοηθού τον μήνα",
   "200 MB αποθήκευση",
   "Το myDATA περιλαμβάνεται",
   "Υποστήριξη μέσω μέιλ",
@@ -11,23 +11,23 @@ const freeFeatures = [
 
 const proFeatures = [
   "Απεριόριστα τιμολόγια",
-  "400 μονάδες βοηθού / μήνα",
+  "400 μονάδες βοηθού τον μήνα",
   "2 GB αποθήκευση",
   "Το myDATA περιλαμβάνεται",
   "Στατιστικά και προτάσεις",
-  "Έξυπνος λογιστής τσέπης (πλήρης πρόσβαση)",
+  "Λογιστής τσέπης (πλήρης πρόσβαση)",
   "Υποστήριξη μέσω μέιλ και συνομιλίας",
 ];
 
 const creditPacks = [
-  { name: "Μικρό", price: "€3", credits: "100 μονάδες", popular: false },
-  { name: "Μεσαίο", price: "€10", credits: "500 μονάδες", popular: true },
-  { name: "Μεγάλο", price: "€25", credits: "1.500 μονάδες", popular: false },
+  { name: "Μικρό", price: "3 €", credits: "100 μονάδες", popular: false },
+  { name: "Μεσαίο", price: "10 €", credits: "500 μονάδες", popular: true },
+  { name: "Μεγάλο", price: "25 €", credits: "1.500 μονάδες", popular: false },
 ];
 
 const storageAddons = [
-  { label: "+10 GB αποθήκευση", price: "€2", period: "/μήνα" },
-  { label: "+50 GB αποθήκευση", price: "€6", period: "/μήνα" },
+  { label: "+10 GB αποθήκευση", price: "2 €", period: "/μήνα" },
+  { label: "+50 GB αποθήκευση", price: "6 €", period: "/μήνα" },
 ];
 ---
 
@@ -61,7 +61,7 @@ const storageAddons = [
         </span>.
       </h2>
       <p class="text-text-muted text-lg leading-relaxed">
-        Δύο πακέτα και διαφανής τιμολόγηση. Το myDATA είναι πάντα μέσα και δεν υπάρχουν ετήσιες δεσμεύσεις.
+        Δύο πακέτα με διαφανή τιμολόγηση. Το myDATA περιλαμβάνεται πάντα, χωρίς ετήσιες δεσμεύσεις.
       </p>
       <p class="mt-4 text-sm text-text-muted">
         Οι τιμές ισχύουν μετά την επίσημη κυκλοφορία.
@@ -76,12 +76,12 @@ const storageAddons = [
         <div class="relative bg-surface-card border border-border rounded-[var(--radius-2xl)] p-7 sm:p-8 h-full flex flex-col shadow-sm hover:shadow-md transition-shadow">
           <div class="mb-6 pb-5 border-b border-border/60">
             <h3 class="text-lg font-bold text-navy-900 mb-1">Δωρεάν</h3>
-            <p class="text-sm text-text-muted">Για να δοκιμάσετε</p>
+            <p class="text-sm text-text-muted">Για να το δοκιμάσετε</p>
           </div>
 
           <div class="mb-7">
             <div class="flex items-baseline gap-2">
-              <span class="font-heading text-5xl font-extrabold text-navy-900 leading-none tabular-nums">€0</span>
+              <span class="font-heading text-5xl font-extrabold text-navy-900 leading-none tabular-nums">0 €</span>
               <span class="text-sm text-text-muted">για πάντα</span>
             </div>
             <p class="text-xs text-text-muted mt-2">Χωρίς χρονικό όριο, χωρίς πιστωτική κάρτα.</p>
@@ -123,10 +123,10 @@ const storageAddons = [
 
             <div class="mb-7">
               <div class="flex items-baseline gap-2">
-                <span class="font-heading text-5xl font-extrabold text-navy-900 leading-none tabular-nums">€9</span>
+                <span class="font-heading text-5xl font-extrabold text-navy-900 leading-none tabular-nums">9 €</span>
                 <span class="text-sm text-text-muted">/μήνα</span>
               </div>
-              <p class="text-xs text-text-muted mt-2">με ΦΠΑ · μηνιαία χρέωση, καμία δέσμευση.</p>
+              <p class="text-xs text-text-muted mt-2">με ΦΠΑ. Μηνιαία χρέωση, καμία δέσμευση.</p>
             </div>
 
             <ul class="space-y-3 mb-8 flex-1">
@@ -166,7 +166,7 @@ const storageAddons = [
             Χρειάζεστε περισσότερα;
           </h3>
           <p class="text-sm text-text-muted leading-relaxed">
-            Προσθέστε μονάδες ή αποθήκευση μόνο όταν σας χρειαστούν. Αγοράζετε μία φορά, χωρίς συνδρομή ή αυτόματη χρέωση.
+            Προσθέστε μονάδες ή αποθήκευση μόνο όταν σας χρειαστούν. Αγορά μία φορά, χωρίς συνδρομή ή αυτόματη χρέωση.
           </p>
         </div>
 
@@ -208,7 +208,7 @@ const storageAddons = [
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 7a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V7zM4 11h16M8 15h.01"/>
               </svg>
-              Επιπλέον Αποθήκευση
+              Επιπλέον αποθήκευση
             </p>
             <ul class="divide-y divide-border/60">
               {storageAddons.map((addon) => (
@@ -225,7 +225,7 @@ const storageAddons = [
 
         <!-- Credit explainer footnote -->
         <p class="text-xs text-text-muted text-center mt-10 max-w-xl mx-auto leading-relaxed border-t border-border/60 pt-6">
-          1 μονάδα αντιστοιχεί περίπου σε μία απλή ερώτηση στον βοηθό. Οι σύνθετες ερωτήσεις και η ανάλυση εγγράφων χρησιμοποιούν περισσότερες μονάδες. Οι μονάδες ισχύουν για 12 μήνες από την αγορά.
+          1 μονάδα αντιστοιχεί περίπου σε μία απλή ερώτηση στον βοηθό. Οι σύνθετες ερωτήσεις και η ανάλυση εγγράφων καταναλώνουν περισσότερες μονάδες. Οι μονάδες ισχύουν για 12 μήνες από την αγορά.
         </p>
       </div>
     </div>

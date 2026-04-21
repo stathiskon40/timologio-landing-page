@@ -3,18 +3,18 @@ import Badge from "./ui/Badge.astro";
 
 const features = [
   {
-    tag: "Ταμειακή Ροή",
+    tag: "Ταμειακή ροή",
     title: "Δεν μένετε ποτέ άδειοι τον Ιούνιο",
     description:
-      "Υπολογίζουμε αυτόματα πόσα χρωστάτε σε ΦΠΑ, ΕΦΚΑ και προκαταβολή φόρου — και κρατάμε εικονικά το ποσό στην άκρη με κάθε εξοφλημένο τιμολόγιο. Βλέπετε πάντα τι σας μένει πραγματικά.",
+      "Με κάθε εξοφλημένο τιμολόγιο υπολογίζουμε πόσα από αυτά αντιστοιχούν σε ΦΠΑ, ΕΦΚΑ και προκαταβολή φόρου και τα κρατάμε νοητά στην άκρη. Ό,τι σας εμφανίζει η εφαρμογή ως «δικά σας», είναι πραγματικά δικά σας.",
     visual: "cashflow",
     reversed: false,
   },
   {
-    tag: "Πελάτες & Πληρωμές",
+    tag: "Πελάτες & πληρωμές",
     title: "Οι πελάτες σας, οργανωμένοι",
     description:
-      "Αυτόματη αναζήτηση ΑΦΜ μέσω ΑΑΔΕ και VIES, ιστορικό κινήσεων και πολυεπίπεδες υπενθυμίσεις σε μέιλ και Viber — μέχρι να εξοφληθεί το τιμολόγιο.",
+      "Συμπληρώνετε ένα ΑΦΜ και η καρτέλα γεμίζει αυτόματα από ΑΑΔΕ και VIES. Κρατάμε ιστορικό κινήσεων και στέλνουμε πολυεπίπεδες υπενθυμίσεις σε μέιλ και Viber, μέχρι να εξοφληθεί το τιμολόγιο.",
     visual: "customers",
     reversed: true,
   },
@@ -22,7 +22,7 @@ const features = [
     tag: "Επαναλαμβανόμενα",
     title: "Μηνιαίοι πελάτες, μηδέν δουλειά",
     description:
-      "Ρυθμίστε το μία φορά και τα τιμολόγια φεύγουν μόνα τους στον σωστό πελάτη κάθε μήνα — με αυτόματη χρέωση και αποστολή στο myDATA.",
+      "Ρυθμίζετε μία φορά τον πελάτη και τα τιμολόγια φεύγουν αυτόματα κάθε μήνα. Αυτόματη χρέωση, αποστολή στο myDATA, χωρίς να χρειάζεται να το θυμάστε.",
     visual: "recurring",
     reversed: false,
   },
@@ -80,7 +80,7 @@ const features = [
 
               <div class="mt-5 pt-4 border-t border-border flex items-center justify-between">
                 <span class="text-xs text-text-muted">Σας μένουν</span>
-                <span class="text-lg font-heading font-extrabold text-success tabular-nums">€3.153</span>
+                <span class="text-lg font-heading font-extrabold text-success tabular-nums">3.153 €</span>
               </div>
             </div>
           )}
@@ -111,12 +111,12 @@ const features = [
                 </div>
                 <div class="bg-navy-50 rounded-[var(--radius-base)] p-2.5">
                   <span class="text-text-muted">Σύνολο</span>
-                  <p class="font-medium text-navy-900 mt-0.5">€8,640</p>
+                  <p class="font-medium text-navy-900 mt-0.5">8.640 €</p>
                 </div>
               </div>
               <div class="mt-3 flex items-center gap-1.5 text-[10px] text-text-muted">
                 <svg class="w-3 h-3 text-success" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                Επαληθευμένο μέσω ΑΑΔΕ και VIES
+                Επιβεβαιωμένο από ΑΑΔΕ και VIES
               </div>
             </div>
           )}
@@ -136,9 +136,9 @@ const features = [
 
               <div class="space-y-2.5">
                 {[
-                  { client: "Αθανασίου ΕΠΕ", desc: "Συντήρηση ιστοσελίδας", amount: "€180", date: "1 κάθε μήνα" },
-                  { client: "Παπαδοπούλου ΙΚΕ", desc: "Λογιστικές υπηρεσίες", amount: "€420", date: "5 κάθε μήνα" },
-                  { client: "Greek Hosting AE", desc: "Hosting plan", amount: "€35", date: "15 κάθε μήνα" },
+                  { client: "Αθανασίου ΕΠΕ", desc: "Συντήρηση ιστοσελίδας", amount: "180 €", date: "1 κάθε μήνα" },
+                  { client: "Παπαδοπούλου ΙΚΕ", desc: "Λογιστικές υπηρεσίες", amount: "420 €", date: "5 κάθε μήνα" },
+                  { client: "Greek Hosting AE", desc: "Hosting plan", amount: "35 €", date: "15 κάθε μήνα" },
                 ].map((r) => (
                   <div class="flex items-center justify-between py-2.5 px-3 rounded-[var(--radius-base)] bg-navy-50 border border-transparent hover:border-gold-300/60 transition-colors">
                     <div class="min-w-0">

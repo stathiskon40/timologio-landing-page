@@ -227,7 +227,7 @@ function DeliveryNoteCard({ confirmed }: { confirmed: boolean }) {
 function InsightsCard({ confirmed }: { confirmed: boolean }) {
   return (
     <CardShell>
-      <CardHeader label="Εκτίμηση Φ2 — Μάρ/Απρ 2026" badge="Υπολογίστηκε" />
+      <CardHeader label="Εκτίμηση Φ2 · Μάρ/Απρ 2026" badge="Υπολογίστηκε" />
       <div
         className="text-3xl font-bold tabular-nums mb-3"
         style={{
@@ -336,7 +336,7 @@ function PaymentReminderCard({ confirmed }: { confirmed: boolean }) {
         <div className="flex gap-2">
           <span className="w-11 flex-shrink-0" style={{ color: MUTED }}>Θέμα</span>
           <span className="min-w-0" style={{ color: NAVY }}>
-            Υπενθύμιση πληρωμής — Τιμολόγιο Α-138
+            Υπενθύμιση πληρωμής · Τιμολόγιο Α-138
           </span>
         </div>
         <div className="my-1" style={{ borderTop: `1px solid ${BORDER}` }} />
@@ -359,7 +359,7 @@ function PaymentReminderCard({ confirmed }: { confirmed: boolean }) {
 function ReceiptExpenseCard({ confirmed }: { confirmed: boolean }) {
   return (
     <CardShell>
-      <CardHeader label="Έξοδο — Καύσιμα" badge="Από απόδειξη" />
+      <CardHeader label="Έξοδο · Καύσιμα" badge="Από απόδειξη" />
       <div className="space-y-1.5 text-xs">
         <Row label="Προμηθευτής" value="Shell Καλλιθέα" />
         <Row label="ΑΦΜ" value="099XXXXXX" />
@@ -400,7 +400,7 @@ const SCENARIOS: readonly Scenario[] = [
   {
     id: "invoice",
     label: "Τιμολόγιο",
-    description: "Μία πρόταση, ένα έτοιμο τιμολόγιο παροχής υπηρεσιών — με ΑΦΜ, ΦΠΑ και αποστολή.",
+    description: "Μία πρόταση, ένα έτοιμο τιμολόγιο παροχής υπηρεσιών. Με ΑΦΜ, ΦΠΑ και αποστολή.",
     icon: <DocIcon />,
     userMessage: "Τιμολόγιο 300€ για σχεδιασμό ιστοσελίδας στη Μαρία Νικολάου",
     thinking: ["Αναζήτηση ΑΦΜ πελάτη...", "Δημιουργία προσχεδίου...", "Έτοιμο!"],
@@ -409,8 +409,8 @@ const SCENARIOS: readonly Scenario[] = [
   },
   {
     id: "delivery",
-    label: "Δελτίο Αποστολής",
-    description: "Προϊόντα, ποσότητες και διεύθυνση παράδοσης — χωρίς ανοίξετε φόρμα 9.3.",
+    label: "Δελτίο αποστολής",
+    description: "Προϊόντα, ποσότητες και διεύθυνση παράδοσης, χωρίς να ανοίξετε τη φόρμα 9.3.",
     icon: <TruckIcon />,
     userMessage: "Δελτίο αποστολής για 5 laptops Dell στην ACME Α.Ε., παράδοση αύριο",
     thinking: ["Αναζήτηση πελάτη ACME Α.Ε....", "Σύνταξη ΔΑ 9.3...", "Έτοιμο!"],
@@ -420,7 +420,7 @@ const SCENARIOS: readonly Scenario[] = [
   {
     id: "insights",
     label: "Στατιστικά",
-    description: "Ρωτήστε φυσικά για έσοδα, ΦΠΑ ή περιθώρια — οι υπολογισμοί γίνονται ζωντανά.",
+    description: "Ρωτήστε για έσοδα, ΦΠΑ ή περιθώρια. Οι υπολογισμοί γίνονται επιτόπου.",
     icon: <ChartIcon />,
     userMessage: "Πόσο ΦΠΑ θα πληρώσω στην επόμενη Φ2;",
     thinking: ["Υπολογισμός εσόδων Μαρ-Απρ...", "Αφαίρεση ΦΠΑ εξόδων...", "Έτοιμο!"],
@@ -430,7 +430,7 @@ const SCENARIOS: readonly Scenario[] = [
   {
     id: "overdue",
     label: "Απλήρωτα",
-    description: "Δείτε με μια ματιά ποιος σας χρωστάει, ιεραρχημένα κατά καθυστέρηση.",
+    description: "Δείτε με μια ματιά ποιος σας οφείλει, ιεραρχημένα κατά καθυστέρηση.",
     icon: <ClockIcon />,
     userMessage: "Ποια τιμολόγια είναι απλήρωτα;",
     thinking: ["Έλεγχος ληξιπρόθεσμων...", "Εύρεση 3 τιμολογίων...", "Έτοιμο!"],
@@ -439,8 +439,8 @@ const SCENARIOS: readonly Scenario[] = [
   },
   {
     id: "reminder",
-    label: "Υπενθύμιση Πληρωμής",
-    description: "Πείτε του ποιον να υπενθυμίσει και ο βοηθός συντάσσει ένα ευγενικό μέιλ πληρωμής, έτοιμο να σταλεί.",
+    label: "Υπενθύμιση πληρωμής",
+    description: "Πείτε ποιον πελάτη να υπενθυμίσει και ο βοηθός συντάσσει ένα ευγενικό μέιλ πληρωμής, έτοιμο να σταλεί.",
     icon: <MailIcon />,
     userMessage: "Στείλε ευγενική υπενθύμιση στον Παπαδόπουλο για το Α-138",
     thinking: [
@@ -453,8 +453,8 @@ const SCENARIOS: readonly Scenario[] = [
   },
   {
     id: "receipt",
-    label: "Σάρωση Απόδειξης",
-    description: "Φωτογραφία οποιασδήποτε απόδειξης — καταχωρείται ως έξοδο με ΦΠΑ αυτόματα.",
+    label: "Σάρωση απόδειξης",
+    description: "Φωτογραφία οποιασδήποτε απόδειξης. Καταχωρείται ως έξοδο με ΦΠΑ αυτόματα.",
     icon: <CameraIcon />,
     userMessage: "Καταχώρισε αυτή την απόδειξη",
     withAttachment: true,
@@ -668,7 +668,7 @@ export default function ChatDemo() {
               style={{ color: MUTED }}
             >
               <span className="h-px w-6" style={{ background: GOLD }} />
-              Διαλέξτε σενάριο
+              Επιλέξτε σενάριο
             </div>
             <div className="space-y-1.5">
               {SCENARIOS.map((s, i) => {
@@ -740,7 +740,7 @@ export default function ChatDemo() {
             <SparkleIcon />
           </div>
           <span className="text-sm font-semibold" style={{ color: NAVY }}>
-            timologio.ai
+            katastixo.com
           </span>
           <span
             className="ml-auto text-[10px] px-2 py-0.5 rounded-full font-medium"
