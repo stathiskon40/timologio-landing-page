@@ -740,7 +740,7 @@ export default function ChatDemo() {
             <SparkleIcon />
           </div>
           <span className="text-sm font-semibold" style={{ color: NAVY }}>
-            katastixo.com
+            kiros.gr
           </span>
           <span
             className="ml-auto text-[10px] px-2 py-0.5 rounded-full font-medium"
