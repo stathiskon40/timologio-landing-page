@@ -4,15 +4,31 @@ import Button from "./ui/Button.astro";
 const faqs = [
   {
     question: "Είναι το kiros.gr συμβατό με την ΑΑΔΕ;",
-    answer: "Ναι. Τα τιμολόγια αποστέλλονται απευθείας στο myDATA μέσω της επίσημης διασύνδεσης της ΑΑΔΕ και λαμβάνουν MARK σε δευτερόλεπτα. Η πιστοποίηση ως αδειοδοτημένος πάροχος ηλεκτρονικής τιμολόγησης είναι ξεχωριστή διαδικασία και θα την ανακοινώσουμε μόλις ολοκληρωθεί.",
+    answer: "Ναι. Τα τιμολόγια αποστέλλονται απευθείας στο myDATA μέσω της επίσημης διασύνδεσης της ΑΑΔΕ και λαμβάνουν MARK σε δευτερόλεπτα. Η τιμολόγησή σας μέσω kiros.gr είναι πλήρως νόμιμη και καλύπτει όλες τις υποχρεώσεις σας προς την εφορία.",
   },
   {
-    question: "Ποιες γλώσσες υποστηρίζει ο βοηθός;",
-    answer: "Ελληνικά και αγγλικά, τόσο σε επίσημη όσο και σε καθημερινή γραφή. Η φωνητική υπαγόρευση λειτουργεί εξολοκλήρου στα ελληνικά, με αναγνώριση φυσικής γλώσσας.",
+    question: "Είστε αδειοδοτημένος πάροχος ηλεκτρονικής τιμολόγησης;",
+    answer: "Όχι ακόμη. Αυτή τη στιγμή τα τιμολόγιά σας φτάνουν στο myDATA μέσω της επίσημης διασύνδεσης της ΑΑΔΕ, επομένως είναι πλήρως νόμιμα και συμμορφωμένα με τις υποχρεώσεις σας. Η πιστοποίηση ως αδειοδοτημένος πάροχος ηλεκτρονικής τιμολόγησης είναι ξεχωριστή, επίσημη διαδικασία της ΑΑΔΕ, την οποία σχεδιάζουμε να ολοκληρώσουμε στο προσεχές διάστημα. Μόλις την αποκτήσουμε, οι χρήστες μας θα επωφελούνται και από τα επιπλέον φορολογικά κίνητρα που προβλέπει ο νόμος για όσους χρησιμοποιούν πάροχο (γρηγορότερη επιστροφή ΦΠΑ, μειωμένος χρόνος παραγραφής). Θα σας ενημερώσουμε μόλις ολοκληρωθεί.",
+  },
+  {
+    question: "Τι γίνεται αν ο βοηθός κάνει λάθος; Θα καταχωρηθούν λανθασμένα στοιχεία στην ΑΑΔΕ;",
+    answer: "Όχι. Ο βοηθός δεν υποβάλλει τίποτα από μόνος του στην ΑΑΔΕ. Για κάθε αλληλεπίδραση με το myDATA (έκδοση, διαβίβαση, ακύρωση) απαιτείται η δική σας ρητή επιβεβαίωση. Αν κάτι δεν είναι σωστό, του το λέτε και το διορθώνει πριν προχωρήσει. Η ροή που βλέπετε παραπάνω είναι σαφής: (1) γράφετε ή υπαγορεύετε, (2) ελέγχετε και επιβεβαιώνετε το τιμολόγιο, (3) μόνο τότε αποστέλλεται στο myDATA. Καμία εγγραφή δεν φεύγει χωρίς το δικό σας «ναι».",
+  },
+  {
+    question: "Πόσο γρήγορα ξεκινάω; Χρειάζομαι τεχνικές γνώσεις;",
+    answer: "Δεν απαιτούνται τεχνικές γνώσεις. Σχεδιάσαμε δύο διαφορετικούς τρόπους καταχώρησης, ώστε να εξυπηρετούν κάθε προφίλ χρήστη. Μέσω του βοηθού, περιγράφετε το παραστατικό με φυσικό λόγο (για παράδειγμα «τιμολόγιο 300€ στον Παπαδόπουλο για τη συντήρηση Απριλίου») και η εγγραφή προετοιμάζεται αυτόματα. Για όσους προτιμούν τη συμπλήρωση σε φόρμα, την επανασχεδιάσαμε εξ ολοκλήρου: μία οθόνη, αυτόματη άντληση στοιχείων πελάτη μέσω ΑΦΜ και προτάσεις από το ιστορικό σας, αντί για τις πολυσέλιδες φόρμες δεκάδων πεδίων που συναντά κανείς στα παραδοσιακά εργαλεία. Η εγγραφή ολοκληρώνεται σε λιγότερο από ένα λεπτό και το πρώτο τιμολόγιο αποστέλλεται στο myDATA εντός δευτερολέπτων.",
+  },
+  {
+    question: "Χρειάζομαι το kiros.gr αν έχω ήδη λογιστή;",
+    answer: "Ο λογιστής σας είναι απαραίτητος για τις δηλώσεις, το κλείσιμο χρήσης και τις φορολογικές σας υποχρεώσεις. Το kiros.gr καλύπτει το καθημερινό κομμάτι της δουλειάς σας: έκδοση τιμολογίων, παρακολούθηση εισπράξεων και αποστολή παραστατικών στο myDATA. Ο λογιστής σας μπορεί να αποκτήσει δική του, ξεχωριστή πρόσβαση, ώστε να ελέγχει απευθείας τα στοιχεία και να κάνει εξαγωγή Ε3 και ΦΠΑ με ένα κλικ, χωρίς να χρειάζεται να του στέλνετε αρχεία.",
   },
   {
     question: "Μπορώ να μεταφέρω τα δεδομένα μου από άλλον πάροχο;",
     answer: "Ναι. Υποστηρίζεται εισαγωγή πελατών και ιστορικού μέσω CSV ή Excel, ενώ ανακτούμε και όλα τα προηγούμενα τιμολόγιά σας απευθείας από το myDATA. Η ομάδα μας θα σας υποστηρίξει σε κάθε βήμα της μετάβασης.",
+  },
+  {
+    question: "Τι γίνεται όταν τελειώσει η δοκιμαστική περίοδος; Θα χρεωθώ αυτόματα;",
+    answer: "Όχι. Δεν ζητάμε πιστωτική κάρτα για να ξεκινήσετε τη δοκιμή, επομένως καμία χρέωση δεν γίνεται αυτόματα. Σας ειδοποιούμε πριν τη λήξη της δοκιμαστικής περιόδου και, αν θέλετε να συνεχίσετε, επιλέγετε πακέτο και μόνο τότε καταχωρείτε στοιχεία πληρωμής. Αν δεν επιλέξετε τίποτα, ο λογαριασμός σας παγώνει χωρίς καμία επιβάρυνση. Μπορείτε να ακυρώσετε τη συνδρομή οποτεδήποτε από τον λογαριασμό σας, χωρίς ελάχιστη δέσμευση.",
   },
   {
     question: "Τι κερδίζω αν εγγραφώ ως πρώτος χρήστης;",
@@ -262,14 +278,14 @@ const faqs = [
       <h3 class="text-xl font-bold text-navy-900 text-center mb-8">Συχνές ερωτήσεις</h3>
       <div class="space-y-2">
         {faqs.map((faq) => (
-          <details class="group bg-surface-card rounded-[var(--radius-lg)] border border-border overflow-hidden">
+          <details name="kiros-faq" class="faq-item group bg-surface-card rounded-[var(--radius-lg)] border border-border overflow-hidden">
             <summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none text-sm font-medium text-navy-900 hover:bg-navy-50/50 transition-colors">
               {faq.question}
-              <svg class="w-4 h-4 text-text-muted flex-shrink-0 ml-4 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-text-muted flex-shrink-0 ml-4 transition-transform duration-300 ease-out group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
               </svg>
             </summary>
-            <div class="px-5 pb-4 text-sm text-text-muted leading-relaxed">
+            <div class="faq-answer px-5 pb-4 text-sm text-text-muted leading-relaxed">
               {faq.answer}
             </div>
           </details>
@@ -415,3 +431,77 @@ const faqs = [
     });
   }
 </script>
+
+<style>
+  /* Fallback reveal — browsers without ::details-content support */
+  @keyframes faq-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .faq-item[open] .faq-answer {
+    animation: faq-reveal 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  .faq-item {
+    transition:
+      border-color 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+      box-shadow 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  .faq-item[open] {
+    border-color: oklch(0.78 0.12 75 / 0.5);
+    box-shadow: 0 10px 28px -18px oklch(0.2 0.02 260 / 0.22);
+  }
+
+  .faq-item > summary {
+    transition: color 0.2s ease, background-color 0.25s ease;
+  }
+
+  .faq-item > summary::-webkit-details-marker,
+  .faq-item > summary::marker {
+    display: none;
+    content: "";
+  }
+
+  /* Modern: smooth height + opacity via ::details-content (Chrome 131+, Safari 18.2+) */
+  @supports (interpolate-size: allow-keywords) {
+    .faq-item {
+      interpolate-size: allow-keywords;
+    }
+
+    .faq-item[open] .faq-answer {
+      animation: none;
+    }
+
+    .faq-item::details-content {
+      opacity: 0;
+      block-size: 0;
+      overflow: clip;
+      transition:
+        content-visibility 0.42s allow-discrete,
+        opacity 0.28s ease,
+        block-size 0.42s cubic-bezier(0.32, 0.72, 0.24, 1);
+    }
+
+    .faq-item[open]::details-content {
+      opacity: 1;
+      block-size: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-item,
+    .faq-item[open] .faq-answer,
+    .faq-item::details-content {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
