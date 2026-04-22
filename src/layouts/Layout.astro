@@ -108,7 +108,7 @@ const jsonLd = {
         observer.observe(el);
       });
 
-      // Sticky nav scroll effect + theme detection
+      // Sticky nav scroll effect + theme detection + scroll-spy
       const nav = document.getElementById("main-nav");
       if (nav) {
         // Probe point near the top of the viewport where the nav pill sits.
@@ -120,12 +120,80 @@ const jsonLd = {
           document.querySelectorAll('[data-nav-theme="dark"]')
         ).filter((el) => el.id !== "main-nav");
 
+        // Scroll-spy: map on-page nav links to their target sections.
+        // Only runs on the landing page; hash links like "/#features" don't target the current DOM on other pages.
+        const isLanding =
+          window.location.pathname === "/" || window.location.pathname === "";
+        type NavEntry = {
+          id: string;
+          section: HTMLElement;
+          links: HTMLAnchorElement[];
+          desktopLink: HTMLAnchorElement | null;
+        };
+        const navEntries: NavEntry[] = [];
+        const desktopPill = document.querySelector<HTMLElement>(".nav-links-pill");
+        const pillIndicator = document.getElementById(
+          "nav-pill-indicator"
+        ) as HTMLElement | null;
+        if (isLanding) {
+          const entryMap = new Map<string, NavEntry>();
+          const anchors = document.querySelectorAll<HTMLAnchorElement>(
+            '#main-nav a[href^="/#"], #mobile-menu a[href^="/#"], #main-nav a[href^="#"], #mobile-menu a[href^="#"]'
+          );
+          anchors.forEach((a) => {
+            const href = a.getAttribute("href") || "";
+            const hash = href.startsWith("/#") ? href.slice(2) : href.slice(1);
+            if (!hash) return;
+            let entry = entryMap.get(hash);
+            if (!entry) {
+              const section = document.getElementById(hash);
+              if (!section) return;
+              entry = { id: hash, section, links: [], desktopLink: null };
+              entryMap.set(hash, entry);
+              navEntries.push(entry);
+            }
+            entry.links.push(a);
+            if (
+              !entry.desktopLink &&
+              desktopPill &&
+              desktopPill.contains(a)
+            ) {
+              entry.desktopLink = a;
+            }
+          });
+        }
+        let activeId: string | null = null;
+
+        function updatePillIndicator(id: string | null, animate = true) {
+          if (!pillIndicator || !desktopPill) return;
+          const entry = id ? navEntries.find((e) => e.id === id) : null;
+          const target = entry?.desktopLink;
+          if (!target) {
+            pillIndicator.classList.remove("is-visible");
+            return;
+          }
+          if (!animate) pillIndicator.classList.add("is-measuring");
+          const pillRect = desktopPill.getBoundingClientRect();
+          const linkRect = target.getBoundingClientRect();
+          const x = linkRect.left - pillRect.left;
+          const y = linkRect.top - pillRect.top;
+          pillIndicator.style.width = `${linkRect.width}px`;
+          pillIndicator.style.height = `${linkRect.height}px`;
+          pillIndicator.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+          pillIndicator.classList.add("is-visible");
+          if (!animate) {
+            // Force a reflow to commit the measuring class, then restore.
+            void pillIndicator.offsetWidth;
+            pillIndicator.classList.remove("is-measuring");
+          }
+        }
+
         function updateNav() {
           // Solid-pill state
           if (window.scrollY > 60) {
-            nav.classList.add("nav-solid");
+            nav!.classList.add("nav-solid");
           } else {
-            nav.classList.remove("nav-solid");
+            nav!.classList.remove("nav-solid");
           }
 
           // Theme: any dark element whose bounds straddle the probe line wins;
@@ -138,8 +206,47 @@ const jsonLd = {
               break;
             }
           }
-          if (nav.getAttribute("data-nav-theme") !== theme) {
-            nav.setAttribute("data-nav-theme", theme);
+          if (nav!.getAttribute("data-nav-theme") !== theme) {
+            nav!.setAttribute("data-nav-theme", theme);
+          }
+
+          // Scroll-spy: pick the section whose top has crossed the trigger line
+          // (just below the nav) but whose bottom is still below it.
+          if (navEntries.length) {
+            const triggerY = 120;
+            let currentId: string | null = null;
+            let bestTop = -Infinity;
+            for (const entry of navEntries) {
+              const r = entry.section.getBoundingClientRect();
+              if (r.top <= triggerY && r.bottom > triggerY) {
+                currentId = entry.id;
+                break;
+              }
+              if (r.top <= triggerY && r.top > bestTop) {
+                bestTop = r.top;
+                currentId = entry.id;
+              }
+            }
+            // If scrolled to bottom, mark the last section as active.
+            if (
+              window.innerHeight + window.scrollY >=
+              document.documentElement.scrollHeight - 2
+            ) {
+              currentId = navEntries[navEntries.length - 1].id;
+            }
+            if (currentId !== activeId) {
+              const firstRun = activeId === null && currentId !== null;
+              activeId = currentId;
+              for (const entry of navEntries) {
+                const on = entry.id === currentId;
+                for (const link of entry.links) {
+                  link.classList.toggle("is-active", on);
+                  if (on) link.setAttribute("aria-current", "location");
+                  else link.removeAttribute("aria-current");
+                }
+              }
+              updatePillIndicator(currentId, !firstRun);
+            }
           }
         }
 
@@ -155,6 +262,10 @@ const jsonLd = {
         }
         window.addEventListener("scroll", onScroll, { passive: true });
         window.addEventListener("resize", onScroll);
+        // Reposition the pill on resize (link widths change with viewport).
+        window.addEventListener("resize", () => {
+          if (activeId) updatePillIndicator(activeId, false);
+        });
         // Initial sync (handles hash-jumps like /#pricing)
         updateNav();
       }

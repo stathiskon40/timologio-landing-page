@@ -1,0 +1,31 @@
+---
+interface Props {
+  src: string;
+  title: string;
+  /** Aspect ratio as height/width, as a percentage number. Arcade provides this per-demo. */
+  aspectRatioPct?: number;
+  /** Extra pixel padding Arcade adds for its chrome. Defaults to 41. */
+  extraPaddingPx?: number;
+}
+
+const {
+  src,
+  title,
+  aspectRatioPct = 54.695767195767196,
+  extraPaddingPx = 41,
+} = Astro.props;
+---
+
+<div
+  style={`position: relative; padding-bottom: calc(${aspectRatioPct}% + ${extraPaddingPx}px); height: 0; width: 100%;`}
+>
+  <iframe
+    src={src}
+    title={title}
+    frameborder="0"
+    loading="lazy"
+    allowfullscreen
+    allow="clipboard-write"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;"
+  ></iframe>
+</div>
