@@ -1,6 +1,21 @@
 ---
 import Button from "./ui/Button.astro";
 
+interface Props {
+  /** Minimal variant: hides section links and scroll-spy. Use on sub-pages like /demos. */
+  simple?: boolean;
+  /** Label for the back link shown in the simple variant. */
+  backLabel?: string;
+  /** Href for the back link. */
+  backHref?: string;
+}
+
+const {
+  simple = false,
+  backLabel = "Επιστροφή στην αρχική",
+  backHref = "/",
+} = Astro.props;
+
 const links = [
   { label: "Δυνατότητες", href: "/#features" },
   { label: "Πώς λειτουργεί", href: "/#demo" },
@@ -11,66 +26,120 @@ const links = [
 ];
 ---
 
-<nav id="main-nav" data-nav-theme="dark" class="fixed top-0 left-0 right-0 z-50">
+<nav
+  id="main-nav"
+  data-nav-theme="dark"
+  data-nav-simple={simple ? "true" : "false"}
+  class="fixed top-0 left-0 right-0 z-50"
+>
   <div class="nav-inner mx-auto">
     <div class="flex items-center justify-between h-16 pl-4 pr-2 sm:pl-5 sm:pr-3">
       <!-- Logo -->
-      <a href="#" class="flex items-center gap-2 group shrink-0">
+      <a href="/" class="flex items-center gap-2 group shrink-0">
         <img src="/logos/only_logo.svg" alt="" width="36" height="36" class="w-9 h-9" />
         <span class="nav-logo-text font-heading font-bold text-lg">
           kiros<span class="text-gold-500">.gr</span>
         </span>
       </a>
 
-      <!-- Desktop links pill -->
-      <div class="nav-links-pill hidden md:flex items-center gap-1 rounded-full px-1.5 py-1.5">
+      {!simple && (
+        <div class="nav-links-pill hidden md:flex items-center gap-1 rounded-full px-1.5 py-1.5 relative">
+          <span
+            id="nav-pill-indicator"
+            class="nav-pill-indicator"
+            aria-hidden="true"
+          ></span>
+          {links.map((link) => (
+            <a
+              href={link.href}
+              class="nav-link relative px-3.5 py-1.5 text-sm font-medium rounded-full"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )}
+
+      {!simple && (
+        <button
+          id="mobile-menu-btn"
+          class="nav-mobile-btn md:hidden p-2"
+          aria-label="Άνοιγμα μενού"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      )}
+
+      {simple && (
+        <a
+          href={backHref}
+          class="nav-back-link hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-medium rounded-full"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            />
+          </svg>
+          <span>{backLabel}</span>
+        </a>
+      )}
+
+      {!simple && (
+        <div class="hidden md:block shrink-0">
+          <Button variant="gold" size="sm" href="/#beta">Ξεκινήστε</Button>
+        </div>
+      )}
+
+      {simple && (
+        <a
+          href={backHref}
+          class="nav-mobile-btn md:hidden p-2 inline-flex items-center gap-1"
+          aria-label={backLabel}
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            />
+          </svg>
+        </a>
+      )}
+    </div>
+  </div>
+
+  {!simple && (
+    <div
+      id="mobile-menu"
+      class="mobile-menu-panel hidden md:hidden mx-4 mt-2 rounded-2xl"
+    >
+      <div class="px-3 py-3 space-y-1">
         {links.map((link) => (
           <a
             href={link.href}
-            class="nav-link px-3.5 py-1.5 text-sm font-medium rounded-full"
+            class="mobile-nav-link block px-3 py-2.5 text-sm font-medium rounded-[var(--radius-base)]"
           >
             {link.label}
           </a>
         ))}
-      </div>
-
-      <!-- CTA -->
-      <div class="hidden md:block shrink-0">
-        <Button variant="gold" size="sm" href="/#beta">Ξεκινήστε</Button>
-      </div>
-
-      <!-- Mobile hamburger -->
-      <button
-        id="mobile-menu-btn"
-        class="nav-mobile-btn md:hidden p-2"
-        aria-label="Άνοιγμα μενού"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-  </div>
-
-  <!-- Mobile menu -->
-  <div
-    id="mobile-menu"
-    class="mobile-menu-panel hidden md:hidden mx-4 mt-2 rounded-2xl"
-  >
-    <div class="px-3 py-3 space-y-1">
-      {links.map((link) => (
-        <a
-          href={link.href}
-          class="mobile-nav-link block px-3 py-2.5 text-sm font-medium rounded-[var(--radius-base)]"
-        >
-          {link.label}
-        </a>
-      ))}
-      <div class="pt-2">
-        <Button variant="gold" size="sm" href="/#beta" class="w-full">Ξεκινήστε</Button>
+        <div class="pt-2">
+          <Button variant="gold" size="sm" href="/#beta" class="w-full">Ξεκινήστε</Button>
+        </div>
       </div>
     </div>
-  </div>
+  )}
 </nav>
 
 <style>
@@ -170,11 +239,54 @@ const links = [
 
   .nav-link {
     color: var(--nav-link-color);
-    transition: color 200ms ease, background-color 200ms ease;
+    transition: color 250ms ease, background-color 200ms ease;
   }
   .nav-link:hover {
     color: var(--nav-link-hover-color);
     background: var(--nav-link-hover-bg);
+  }
+  .nav-link.is-active {
+    color: oklch(0.88 0.12 68);
+  }
+  #main-nav[data-nav-theme="light"] .nav-link.is-active {
+    color: oklch(0.52 0.14 68);
+  }
+
+  /* Sliding active-pill indicator — positioned by JS */
+  .nav-pill-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-radius: 9999px;
+    background: oklch(0.78 0.13 68 / 0.14);
+    pointer-events: none;
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+    transition:
+      transform 420ms cubic-bezier(0.32, 0.72, 0, 1),
+      width 420ms cubic-bezier(0.32, 0.72, 0, 1),
+      height 420ms cubic-bezier(0.32, 0.72, 0, 1),
+      opacity 220ms ease,
+      background-color 300ms ease;
+    will-change: transform, width, height;
+  }
+  #main-nav[data-nav-theme="light"] .nav-pill-indicator {
+    background: oklch(0.78 0.13 68 / 0.18);
+  }
+  .nav-pill-indicator.is-visible {
+    opacity: 1;
+  }
+  /* Suppress initial slide-in transition before first measurement */
+  .nav-pill-indicator.is-measuring {
+    transition: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-pill-indicator {
+      transition: opacity 150ms ease;
+    }
   }
 
   .nav-mobile-btn {
@@ -183,6 +295,22 @@ const links = [
   }
   .nav-mobile-btn:hover {
     color: var(--nav-link-hover-color);
+  }
+
+  /* Back link (simple variant) */
+  .nav-back-link {
+    color: var(--nav-link-color);
+    transition: color 200ms ease, background-color 200ms ease, transform 200ms ease;
+  }
+  .nav-back-link:hover {
+    color: var(--nav-link-hover-color);
+    background: var(--nav-link-hover-bg);
+  }
+  .nav-back-link:hover svg {
+    transform: translateX(-2px);
+  }
+  .nav-back-link svg {
+    transition: transform 200ms ease;
   }
 
   /* ---- Center links pill ---- */
@@ -217,6 +345,14 @@ const links = [
   .mobile-nav-link:hover {
     color: var(--nav-link-hover-color);
     background: var(--nav-mobile-link-hover-bg);
+  }
+  .mobile-nav-link.is-active {
+    color: oklch(0.78 0.13 68);
+    background: oklch(0.78 0.13 68 / 0.12);
+  }
+  #main-nav[data-nav-theme="light"] .mobile-nav-link.is-active {
+    color: oklch(0.58 0.14 68);
+    background: oklch(0.78 0.13 68 / 0.14);
   }
 
   /* ---- Responsive tuning ---- */
