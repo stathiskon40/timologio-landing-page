@@ -1,0 +1,160 @@
+---
+export interface DemoShot {
+  src: string;
+  alt: string;
+  title: string;
+  caption: string;
+  /** "wide" spans 2 columns on desktop; default is 1. */
+  span?: "wide" | "normal";
+}
+
+interface Props {
+  shots: DemoShot[];
+}
+
+const { shots } = Astro.props;
+---
+
+<section class="demo-gallery">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+    {
+      shots.map((shot, idx) => (
+        <figure
+          class:list={[
+            "demo-shot animate-on-scroll relative",
+            shot.span === "wide" && "lg:col-span-2",
+          ]}
+          style={`animation-delay: ${idx * 60}ms`}
+        >
+          <span
+            aria-hidden="true"
+            class="hidden lg:block absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-gold-500 z-10"
+          />
+          <span
+            aria-hidden="true"
+            class="hidden lg:block absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-gold-500 z-10"
+          />
+          <span
+            aria-hidden="true"
+            class="hidden lg:block absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-gold-500 z-10"
+          />
+          <span
+            aria-hidden="true"
+            class="hidden lg:block absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-gold-500 z-10"
+          />
+
+          <button
+            type="button"
+            class="group block w-full text-left cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 rounded-[var(--radius-lg)]"
+            data-demo-open
+            data-demo-src={shot.src}
+            data-demo-alt={shot.alt}
+            aria-label={`Μεγέθυνση: ${shot.title}`}
+          >
+            <div class="browser-frame rounded-[var(--radius-lg)] overflow-hidden bg-white shadow-[0_18px_40px_-24px_rgb(12_18_36/0.35)] ring-1 ring-navy-200/70 transition-shadow duration-300 group-hover:shadow-[0_24px_56px_-24px_rgb(12_18_36/0.45)]">
+              <div class="browser-chrome flex items-center gap-3 px-4 py-2.5 bg-navy-50/80 border-b border-navy-100">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-[#ED6A5E]" />
+                  <span class="w-2.5 h-2.5 rounded-full bg-[#F4BF4F]" />
+                  <span class="w-2.5 h-2.5 rounded-full bg-[#61C554]" />
+                </div>
+                <div class="flex-1 text-center text-[11px] font-medium tracking-wide text-navy-500 truncate">
+                  kiros.gr
+                </div>
+                <span class="w-10" aria-hidden="true" />
+              </div>
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                loading="lazy"
+                decoding="async"
+                class="block w-full h-auto select-none"
+              />
+            </div>
+          </button>
+
+          <figcaption class="mt-5 px-1">
+            <div class="flex items-baseline gap-3">
+              <span class="text-[10px] font-semibold tracking-[0.22em] uppercase text-gold-600">
+                {String(idx + 1).padStart(2, "0")}
+              </span>
+              <h3 class="font-heading text-lg font-bold text-navy-900 leading-tight">
+                {shot.title}
+              </h3>
+            </div>
+            <p class="mt-2 text-sm text-text-muted leading-relaxed">
+              {shot.caption}
+            </p>
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+
+  <!-- Lightbox -->
+  <div
+    id="demo-lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-navy-950/90 backdrop-blur-sm p-4 sm:p-8"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Προεπισκόπηση στιγμιοτύπου"
+  >
+    <button
+      type="button"
+      data-demo-close
+      class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500"
+      aria-label="Κλείσιμο"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <img
+      id="demo-lightbox-img"
+      src=""
+      alt=""
+      class="max-w-full max-h-full object-contain rounded-[var(--radius-lg)] shadow-2xl"
+    />
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const lightbox = document.getElementById("demo-lightbox");
+    const img = document.getElementById("demo-lightbox-img");
+    if (!lightbox || !img) return;
+
+    const open = (src, alt) => {
+      img.src = src;
+      img.alt = alt || "";
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    };
+
+    const close = () => {
+      lightbox.classList.add("hidden");
+      lightbox.classList.remove("flex");
+      img.src = "";
+      document.body.style.overflow = "";
+    };
+
+    document.querySelectorAll("[data-demo-open]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        open(btn.getAttribute("data-demo-src") || "", btn.getAttribute("data-demo-alt") || "");
+      });
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) close();
+    });
+
+    document.querySelectorAll("[data-demo-close]").forEach((btn) => {
+      btn.addEventListener("click", close);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !lightbox.classList.contains("hidden")) close();
+    });
+  })();
+</script>

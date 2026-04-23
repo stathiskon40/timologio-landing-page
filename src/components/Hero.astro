@@ -16,10 +16,34 @@ import Badge from "./ui/Badge.astro";
           Φτιαγμένο για Έλληνες επαγγελματίες
         </Badge>
 
-        <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-white leading-[1.1] tracking-tight mb-6">
+        <h1 class="text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-[3.25rem] 2xl:text-[3.5rem] font-extrabold text-white leading-[1.1] tracking-tight mb-6">
           Υπαγορεύετε το τιμολόγιο.<br />
           <span class="text-gold-500">Φεύγει στο myDATA σε 30&nbsp;δευτερόλεπτα.</span>
         </h1>
+
+        <!-- Mobile-only compact proof (desktop shows full chat mockup in right column) -->
+        <div class="lg:hidden mb-8">
+          <div class="bg-navy-800/60 rounded-[var(--radius-xl)] border border-white/10 p-3 backdrop-blur-sm shadow-xl text-left">
+            <div class="flex justify-end mb-2">
+              <div class="bg-gold-500/15 rounded-[var(--radius-lg)] rounded-tr-sm px-3 py-2 max-w-[90%]">
+                <p class="text-xs text-white/90">«Τιμολόγιο 500€ στον Παπαδόπουλο για συμβουλευτικές»</p>
+              </div>
+            </div>
+            <div class="bg-white/[0.08] rounded-[var(--radius-lg)] border border-white/10 p-3">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-semibold text-gold-500 uppercase tracking-wider">Τιμολόγιο Παροχής Υπηρεσιών</span>
+                <span class="text-[9px] px-2 py-0.5 bg-gold-500/20 text-gold-400 rounded-full font-medium">Προσχέδιο</span>
+              </div>
+              <div class="flex justify-between text-sm font-semibold text-white pt-1">
+                <span>Σύνολο</span>
+                <span class="tabular-nums">620,00 €</span>
+              </div>
+              <button class="mt-2 w-full text-xs bg-gold-500 text-navy-950 font-semibold py-1.5 rounded-[var(--radius-base)]">
+                Αποστολή στο myDATA
+              </button>
+            </div>
+          </div>
+        </div>
 
         <p class="text-lg text-navy-300 max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
           Το γράφετε ή το υπαγορεύετε στα ελληνικά. Ο βοηθός συμπληρώνει τα στοιχεία, εσείς επιβεβαιώνετε, η ΑΑΔΕ το παραλαμβάνει. Η ίδια εφαρμογή καταχωρεί αποδείξεις από φωτογραφία και κρατά ΦΠΑ, ΕΦΚΑ και τεκμήρια πάντα ενημερωμένα.
@@ -75,8 +99,8 @@ import Badge from "./ui/Badge.astro";
         </div>
       </div>
 
-      <!-- Right: Chat mockup -->
-      <div class="relative animate-on-scroll slide-right">
+      <!-- Right: Chat mockup (desktop only; mobile shows a compact version in the left column) -->
+      <div class="relative animate-on-scroll slide-right hidden lg:block">
         <div class="bg-navy-800/60 rounded-[var(--radius-2xl)] border border-white/10 p-1 shadow-2xl backdrop-blur-sm">
           <!-- Window chrome -->
           <div class="flex items-center gap-1.5 px-4 py-3 border-b border-white/5">
