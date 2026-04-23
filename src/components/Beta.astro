@@ -1,6 +1,8 @@
 ---
 import Button from "./ui/Button.astro";
 
+const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
+
 const faqs = [
   {
     question: "Είναι το kiros.gr συμβατό με την ΑΑΔΕ;",
@@ -173,6 +175,14 @@ const faqs = [
           </p>
 
           <form id="beta-form" class="text-left" novalidate>
+            <!-- Honeypot: hidden from humans, bots tend to fill every input -->
+            <div aria-hidden="true" class="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden" tabindex="-1">
+              <label>
+                Website (leave empty)
+                <input type="text" name="website" tabindex="-1" autocomplete="off" />
+              </label>
+            </div>
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <input
                 type="text"
@@ -232,6 +242,17 @@ const faqs = [
                 Αποδέχομαι την <a href="/privacy" class="text-gold-600 hover:text-gold-700 underline">Πολιτική Απορρήτου</a> και συναινώ στην επεξεργασία των στοιχείων μου για επικοινωνία σχετικά με τη δοκιμαστική περίοδο.
               </span>
             </label>
+
+            {TURNSTILE_SITE_KEY && (
+              <div class="mt-4 flex justify-center">
+                <div
+                  class="cf-turnstile"
+                  data-sitekey={TURNSTILE_SITE_KEY}
+                  data-theme="light"
+                  data-size="flexible"
+                ></div>
+              </div>
+            )}
 
             <div class="mt-5">
               <Button variant="gold" size="lg" class="w-full">
@@ -295,7 +316,9 @@ const faqs = [
 </section>
 
 <script>
-  const API_URL = import.meta.env.PUBLIC_API_URL || "http://localhost:5000";
+  const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL || "";
+  const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || "";
+  const WAITLIST_ENDPOINT = SUPABASE_URL ? `${SUPABASE_URL}/functions/v1/waitlist-signup` : "";
 
   // ---- Social proof counter (deterministic, grows daily) ----
   const counterEl = document.querySelector<HTMLElement>("[data-beta-counter]");
@@ -401,14 +424,32 @@ const faqs = [
       }
       payload.consent_privacy = true;
 
+      // Turnstile token (only enforced when a site key is configured)
+      const turnstileInput = form.querySelector<HTMLInputElement>('input[name="cf-turnstile-response"]');
+      const turnstileToken = turnstileInput?.value?.trim() || "";
+      if (WAITLIST_ENDPOINT && !turnstileToken) {
+        showError("Παρακαλούμε ολοκληρώστε τον έλεγχο ανθρώπινου χρήστη.");
+        return;
+      }
+      if (turnstileToken) payload.turnstile_token = turnstileToken;
+
+      if (!WAITLIST_ENDPOINT || !SUPABASE_ANON_KEY) {
+        showError("Η εγγραφή δεν είναι διαθέσιμη αυτή τη στιγμή. Δοκιμάστε ξανά σε λίγο.");
+        return;
+      }
+
       if (submitBtn) submitBtn.disabled = true;
       const originalLabel = submitLabel.textContent;
       submitLabel.textContent = "Εγγραφή...";
 
       try {
-        const res = await fetch(`${API_URL}/api/waitlist`, {
+        const res = await fetch(WAITLIST_ENDPOINT, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            apikey: SUPABASE_ANON_KEY,
+            Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+          },
           body: JSON.stringify(payload),
         });
         const json = await res.json().catch(() => ({}));
@@ -428,15 +469,32 @@ const faqs = [
           return;
         }
         showError(json.error || "Σφάλμα εγγραφής. Παρακαλούμε δοκιμάστε ξανά.");
+        resetTurnstile();
       } catch {
         showError("Σφάλμα σύνδεσης. Παρακαλούμε δοκιμάστε ξανά.");
+        resetTurnstile();
       } finally {
         if (submitBtn) submitBtn.disabled = false;
         submitLabel.textContent = originalLabel;
       }
     });
+
+    function resetTurnstile() {
+      const ts = (window as unknown as {
+        turnstile?: { reset: (selector?: string) => void };
+      }).turnstile;
+      try { ts?.reset(); } catch { /* noop */ }
+    }
   }
 </script>
+
+<!-- Cloudflare Turnstile (loaded only on pages that render this component) -->
+<script
+  is:inline
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  async
+  defer
+></script>
 
 <style>
   /* Fallback reveal — browsers without ::details-content support */
