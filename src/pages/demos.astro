@@ -2,13 +2,93 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
-import ArcadeEmbed from "../components/ArcadeEmbed.astro";
-import DemoSection from "../components/DemoSection.astro";
+import DemoGallery, { type DemoShot } from "../components/DemoGallery.astro";
+
+const shots: DemoShot[] = [
+  {
+    src: "/demos/01-dashboard.png",
+    alt: "Αρχική σελίδα του kiros.gr με δείκτες εσόδων, εξόδων και γραφήματα.",
+    title: "Η εικόνα του μήνα σε μία ματιά",
+    caption:
+      "Έσοδα, έξοδα, ΦΠΑ, κερδοφορία και κορυφαίοι πελάτες, όλα σε μία οθόνη. Τα νούμερα ενημερώνονται αυτόματα από το myDATA.",
+    span: "wide",
+  },
+  {
+    src: "/demos/02-invoices-list.png",
+    alt: "Λίστα πωλήσεων με MARK, ΑΑΔΕ χαρακτηρισμούς και κατάσταση πληρωμής.",
+    title: "Πωλήσεις με MARK και κατάσταση",
+    caption:
+      "Κάθε εκδοθέν παραστατικό φέρει τον αριθμό MARK, τη σειρά και την κατάσταση πληρωμής του, χωρίς χειροκίνητη συμπλήρωση.",
+  },
+  {
+    src: "/demos/11-invoice-detail.png",
+    alt: "Καρτέλα τιμολογίου με στοιχεία εκδότη, λήπτη και αναλυτικές γραμμές.",
+    title: "Καρτέλα τιμολογίου",
+    caption:
+      "Πλήρης ανάγνωση του παραστατικού με χαρακτηρισμούς Ε3, τρόπους πληρωμής και ενέργειες προς ΑΑΔΕ σε ένα κλικ.",
+  },
+  {
+    src: "/demos/03-create-invoice.png",
+    alt: "Φόρμα δημιουργίας νέου παραστατικού με πεδία ΑΦΜ και γραμμές.",
+    title: "Δημιουργία παραστατικού",
+    caption:
+      "Επιλέγετε τύπο, συμπληρώνετε λήπτη με αναζήτηση ΑΦΜ και αποθηκεύετε. Ένα κουμπί υποβάλλει το παραστατικό στο myDATA.",
+  },
+  {
+    src: "/demos/06-agent.png",
+    alt: "Βοηθός AI με πεδίο εντολής σε φυσική γλώσσα για έκδοση τιμολογίου.",
+    title: "Βοηθός AI σε φυσική γλώσσα",
+    caption:
+      "Περιγράφετε το παραστατικό με μία πρόταση. Ο βοηθός προσυμπληρώνει τα πεδία, επιβεβαιώνετε και φεύγει στην ΑΑΔΕ.",
+  },
+  {
+    src: "/demos/04-customers.png",
+    alt: "Λίστα πελατών με σύνολο εσόδων ανά πελάτη.",
+    title: "Πελατολόγιο με τζίρο",
+    caption:
+      "Όλοι οι πελάτες σε μία λίστα, με σύνολο εσόδων και στοιχεία επικοινωνίας. Εμπλουτίζεται αυτόματα από τιμολόγια και ΑΦΜ.",
+  },
+  {
+    src: "/demos/05-customer-detail.png",
+    alt: "Καρτέλα πελάτη με γραφήματα και πρόσφατα τιμολόγια.",
+    title: "Καρτέλα πελάτη",
+    caption:
+      "Μηνιαία έσοδα, κατανομή παραστατικών, ανεξόφλητα και πρόσφατη δραστηριότητα για κάθε πελάτη ξεχωριστά.",
+  },
+  {
+    src: "/demos/08-expenses.png",
+    alt: "Λίστα εξόδων με πηγή ΑΑΔΕ ή ιδιοκαταχώρηση και χαρακτηρισμούς.",
+    title: "Έξοδα με πηγή και χαρακτηρισμό",
+    caption:
+      "Ληφθέντα παραστατικά από την ΑΑΔΕ μαζί με ιδιοκαταχωρήσεις. Κάθε εγγραφή φέρει ετικέτα ΑΑΔΕ ή Πρόχειρο.",
+  },
+  {
+    src: "/demos/07-products.png",
+    alt: "Κατάλογος προϊόντων και υπηρεσιών με τιμές και ΦΠΑ.",
+    title: "Κατάλογος προϊόντων και υπηρεσιών",
+    caption:
+      "Αποθηκεύετε προϊόντα και υπηρεσίες με κωδικό, τιμή και ΦΠΑ. Επιλέγονται με αναζήτηση κατά την έκδοση.",
+  },
+  {
+    src: "/demos/09-delivery-note-create.png",
+    alt: "Φόρμα έκδοσης δελτίου αποστολής.",
+    title: "Δελτίο αποστολής",
+    caption:
+      "Έκδοση δελτίων διακίνησης με στοιχεία οχήματος και διευθύνσεις φόρτωσης και παράδοσης, σε πλήρη συμμόρφωση με το myDATA.",
+  },
+  {
+    src: "/demos/10-settings.png",
+    alt: "Ρυθμίσεις προεπιλογών φόρμας και σειρών παραστατικών.",
+    title: "Ρυθμίσεις και προεπιλογές",
+    caption:
+      "Ορίζετε προεπιλογές φόρμας, σειρές, πρότυπα και προτιμήσεις email ώστε κάθε νέο παραστατικό να ξεκινά σωστά.",
+  },
+];
 ---
 
 <Layout
   title="Περιήγηση στην πλατφόρμα | kiros.gr"
-  description="Διαδραστική περιήγηση στο kiros.gr. Δείτε πώς θα λειτουργεί η τιμολόγηση με τεχνητή νοημοσύνη σε συνεργασία με το myDATA της ΑΑΔΕ, χωρίς εγγραφή."
+  description="Στιγμιότυπα από την πλατφόρμα kiros.gr. Δείτε πώς μοιάζει η τιμολόγηση με τεχνητή νοημοσύνη σε συνεργασία με το myDATA της ΑΑΔΕ."
 >
   <Nav simple />
   <main>
@@ -30,13 +110,13 @@ import DemoSection from "../components/DemoSection.astro";
             <div class="flex items-center gap-3 mb-5">
               <span class="h-px w-10 bg-gold-500"></span>
               <span class="text-[11px] font-semibold tracking-[0.22em] uppercase text-navy-700">
-                Διαδραστική περιήγηση
+                Στιγμιότυπα πλατφόρμας
               </span>
             </div>
             <h1
               class="font-heading text-[2.25rem] sm:text-5xl lg:text-[3.4rem] font-extrabold text-navy-900 leading-[1.05] tracking-tight"
             >
-              Περιηγηθείτε στο kiros.gr<br />
+              Μια ματιά στο kiros.gr<br />
               πριν την πρώτη σας τιμολόγηση.
             </h1>
           </div>
@@ -45,8 +125,8 @@ import DemoSection from "../components/DemoSection.astro";
             style="animation-delay: 140ms"
           >
             <p class="text-text-muted text-lg leading-relaxed max-w-sm">
-              Δοκιμάστε τις βασικές λειτουργίες μέσα από καθοδηγούμενους οδηγούς.
-              Κάντε κλικ, προχωρήστε σε κάθε βήμα και δείτε την πλατφόρμα από μέσα.
+              Επιλεγμένα στιγμιότυπα από τις βασικές οθόνες της πλατφόρμας.
+              Πατήστε σε οποιοδήποτε για μεγέθυνση.
             </p>
           </div>
         </div>
@@ -59,7 +139,7 @@ import DemoSection from "../components/DemoSection.astro";
         <div
           class="relative rounded-[var(--radius-lg)] border border-gold-500/30 bg-gold-500/5 px-5 py-4 sm:px-6 sm:py-5"
           role="note"
-          aria-label="Σημείωση σχετικά με την περιήγηση"
+          aria-label="Σημείωση σχετικά με τα στιγμιότυπα"
         >
           <div class="flex items-start gap-3 sm:gap-4">
             <div
@@ -82,14 +162,14 @@ import DemoSection from "../components/DemoSection.astro";
             </div>
             <div class="flex-1">
               <p class="text-sm font-semibold text-navy-900 mb-1">
-                Σημείωση για την περιήγηση
+                Σημείωση για τα στιγμιότυπα
               </p>
               <p class="text-sm text-text-muted leading-relaxed">
-                Οι οδηγοί που ακολουθούν αποτελούν προεπισκόπηση των δυνατοτήτων
-                της πλατφόρμας και δεν αντιπροσωπεύουν απαραίτητα την τελική
+                Οι εικόνες αποτελούν προεπισκόπηση των δυνατοτήτων της
+                πλατφόρμας και δεν αντιπροσωπεύουν απαραίτητα την τελική
                 εμπειρία χρήστη. Το kiros.gr βρίσκεται σε ενεργό ανάπτυξη,
-                επομένως η διεπαφή, οι λειτουργίες και η ροή εργασίας ενδέχεται να
-                διαφοροποιηθούν στην τελική έκδοση.
+                επομένως η διεπαφή, οι λειτουργίες και η ροή εργασίας ενδέχεται
+                να διαφοροποιηθούν στην τελική έκδοση.
               </p>
             </div>
           </div>
@@ -97,20 +177,10 @@ import DemoSection from "../components/DemoSection.astro";
       </div>
     </section>
 
-    <!-- Demos list -->
-    <section class="relative bg-surface pb-24 lg:pb-32">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 lg:space-y-28">
-        <DemoSection
-          id="invoice-submission"
-          eyebrow="Οδηγός 01"
-          title="Δημιουργία και υποβολή τιμολογίου παροχής υπηρεσιών"
-          description="Παρακολουθήστε ολόκληρη τη διαδρομή, από τη συμπλήρωση των στοιχείων έως την επιτυχή αποστολή στο myDATA της ΑΑΔΕ."
-        >
-          <ArcadeEmbed
-            src="https://demo.arcade.software/wZflGQY96bSjncnlMQD7?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
-            title="Δημιουργία και Υποβολή Τιμολογίου Παροχής Υπηρεσιών στην ΑΑΔΕ"
-          />
-        </DemoSection>
+    <!-- Gallery -->
+    <section class="relative bg-surface pb-24 lg:pb-32 pt-10 lg:pt-14">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <DemoGallery shots={shots} />
       </div>
     </section>
   </main>

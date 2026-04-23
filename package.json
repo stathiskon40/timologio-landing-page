@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "npm run build && wrangler dev",
     "generate-types": "wrangler types",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "capture-demos": "tsx scripts/capture-demos.ts"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.2.1",
@@ -21,6 +22,8 @@
     "tailwindcss": "^4.2.0"
   },
   "devDependencies": {
+    "playwright": "^1.50.0",
+    "tsx": "^4.19.0",
     "wrangler": "^4.84.1"
   },
   "overrides": {
