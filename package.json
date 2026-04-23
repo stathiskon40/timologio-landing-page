@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "npm run build && wrangler dev",
+    "generate-types": "wrangler types",
+    "deploy": "npm run build && wrangler deploy",
     "capture-demos": "tsx scripts/capture-demos.ts"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.2.1",
     "@astrojs/react": "^5.0.2",
     "@tailwindcss/vite": "^4.2.0",
     "astro": "^6.1.2",
@@ -20,6 +23,10 @@
   },
   "devDependencies": {
     "playwright": "^1.50.0",
-    "tsx": "^4.19.0"
+    "tsx": "^4.19.0",
+    "wrangler": "^4.84.1"
+  },
+  "overrides": {
+    "vite": "^7"
   }
 }
